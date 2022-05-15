@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!--
+  <head>
+    <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
 
@@ -14,45 +14,138 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="$FLUTTER_BASE_HREF">
+    <base href="$FLUTTER_BASE_HREF" />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="description" content="A new Flutter project." />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="mood_picker_example">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Mood Picker Example" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>mood_picker_example</title>
-  <link rel="manifest" href="manifest.json">
+    <title>Mood Picker Example</title>
+    <link rel="manifest" href="manifest.json" />
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
-</head>
-<body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
+    <style>
+      .loader {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .mr-miyagi {
+        --uib-size: 20vw;
+        --uib-speed: 1s;
+        --uib-color: black;
+        --uib-line-weight: 2vw;
+
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--uib-size);
+        width: var(--uib-size);
+      }
+
+      .mr-miyagi__line {
+        position: absolute;
+        top: calc(50% - var(--uib-line-weight) / 2);
+        left: 0;
+        height: var(--uib-line-weight);
+        width: 100%;
+        border-radius: calc(var(--uib-line-weight) / 2);
+        background-color: var(--uib-color);
+        animation: rotate var(--uib-speed) ease-in-out infinite alternate;
+      }
+
+      .mr-miyagi__line:nth-child(2) {
+        animation-delay: calc(var(--uib-speed) * 0.075);
+        opacity: 0.8;
+      }
+
+      .mr-miyagi__line:nth-child(3) {
+        animation-delay: calc(var(--uib-speed) * 0.15);
+        opacity: 0.6;
+      }
+
+      .mr-miyagi__line:nth-child(4) {
+        animation-delay: calc(var(--uib-speed) * 0.225);
+        opacity: 0.4;
+      }
+
+      .mr-miyagi__line:nth-child(5) {
+        animation-delay: calc(var(--uib-speed) * 0.3);
+        opacity: 0.2;
+      }
+
+      .mr-miyagi__line:nth-child(6) {
+        animation-delay: calc(var(--uib-speed) * 0.375);
+        opacity: 0.1;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
         }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
+
+        100% {
+          transform: rotate(180deg);
+        }
+      }
+    </style>
+
+    <script>
+      // The value below is injected by flutter build, do not touch.
+      var serviceWorkerVersion = null;
+    </script>
+    <!-- This script adds the flutter initialization JS code -->
+    <script src="flutter.js" defer></script>
+  </head>
+  <body>
+    <div id="loader" class="loader">
+      <div class="mr-miyagi">
+        <div class="mr-miyagi__line"></div>
+        <div class="mr-miyagi__line"></div>
+        <div class="mr-miyagi__line"></div>
+        <div class="mr-miyagi__line"></div>
+        <div class="mr-miyagi__line"></div>
+        <div class="mr-miyagi__line"></div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener('load', function (ev) {
+        // Download main.dart.js
+        _flutter.loader
+          .loadEntrypoint({
+            serviceWorker: {
+              serviceWorkerVersion: serviceWorkerVersion,
+            },
+          })
+          .then(function (engineInitializer) {
+            return engineInitializer.initializeEngine();
+          })
+          .then(function (appRunner) {
+            return appRunner.runApp();
+          });
+        // Remove Loading Indicator
+        setTimeout(function () {
+          var loadingIndicator = document.getElementById('loader');
+          if (loadingIndicator) {
+            loadingIndicator.remove();
+          }
+        }, 10000);
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
