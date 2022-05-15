@@ -17,8 +17,10 @@ To use this package, add the following in your `pubspec.yaml` under `dependencie
 ## Usage
 
 A small example using this mood picker can be found under `example` directory.
+The example app is also deployed using GitHub Pages [here][example_demo_link].
 
 [mood_meter_app_link]: https://moodmeterapp.com/
+[example_demo_link]: https://shakyacsun.github.io/mood_meter_picker/
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
