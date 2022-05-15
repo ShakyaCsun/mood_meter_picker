@@ -1,0 +1,15 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/generated_plugin_registrant.dart'
+
+linter:
+  rules:
+    public_member_api_docs: false
+    use_enums: true
+    depend_on_referenced_packages: true
+    use_colored_box: true
+    use_super_parameters: true
