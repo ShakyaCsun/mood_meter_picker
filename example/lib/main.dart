@@ -34,15 +34,29 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String emotion = '...';
+  bool showOnlySelected = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('I feel $emotion'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              setState(() {
+                showOnlySelected = !showOnlySelected;
+              });
+            },
+            child: Text(
+              showOnlySelected ? 'Show All Labels' : 'Show Selected Label',
+            ),
+          )
+        ],
       ),
       body: MoodMeterPicker(
         initialMoodPiece: MoodPiece.fromName('Hopeful'),
+        onlyShowSelected: showOnlySelected,
         onMoodSelectionChanged: (moodPiece) {
           setState(() {
             emotion = moodPiece.moodName;
