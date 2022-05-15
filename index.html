@@ -23,16 +23,20 @@
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="mood_picker_example" />
+    <meta name="apple-mobile-web-app-title" content="Mood Picker Example" />
     <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
 
-    <title>mood_picker_example</title>
+    <title>Mood Picker Example</title>
     <link rel="manifest" href="manifest.json" />
 
     <style>
+      body {
+        overflow: hidden;
+      }
+
       .loader {
         width: 100vw;
         height: 100vh;
@@ -102,9 +106,10 @@
         }
       }
     </style>
+
     <script>
       // The value below is injected by flutter build, do not touch.
-      var serviceWorkerVersion = '4229558692';
+      var serviceWorkerVersion = '3474112784';
     </script>
     <!-- This script adds the flutter initialization JS code -->
     <script src="flutter.js" defer></script>
@@ -122,14 +127,6 @@
     </div>
 
     <script>
-      window.onload = function () {
-        setTimeout(function () {
-          var loadingIndicator = document.getElementById('loader');
-          if (loadingIndicator) {
-            loadingIndicator.remove();
-          }
-        }, 10000);
-      };
       window.addEventListener('load', function (ev) {
         // Download main.dart.js
         _flutter.loader
@@ -144,6 +141,13 @@
           .then(function (appRunner) {
             return appRunner.runApp();
           });
+        // Remove Loading Indicator
+        setTimeout(function () {
+          var loadingIndicator = document.getElementById('loader');
+          if (loadingIndicator) {
+            loadingIndicator.remove();
+          }
+        }, 10000);
       });
     </script>
   </body>
