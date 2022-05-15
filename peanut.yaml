@@ -1,0 +1,4 @@
+directories:
+  - example/web
+
+extra-args: '--base-href /mood_meter_picker/'
