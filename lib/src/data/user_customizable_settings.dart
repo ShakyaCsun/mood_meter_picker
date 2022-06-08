@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:mood_meter_picker/mood_meter_picker.dart';
 
 class UserCustomizableSettings {
   UserCustomizableSettings({
@@ -7,9 +7,9 @@ class UserCustomizableSettings {
     required this.onlyShowSelected,
   });
 
-  final TextStyle? unselectedTextStyle;
+  final ThemedTextStyle? unselectedTextStyle;
 
-  final TextStyle? selectedTextStyle;
+  final ThemedTextStyle? selectedTextStyle;
 
   final bool onlyShowSelected;
 }

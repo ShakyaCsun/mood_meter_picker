@@ -42,14 +42,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('I feel $emotion'),
         actions: [
-          TextButton(
-            onPressed: () {
-              setState(() {
-                showOnlySelected = !showOnlySelected;
-              });
-            },
-            child: Text(
-              showOnlySelected ? 'Show All Labels' : 'Show Selected Label',
+          Center(
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  showOnlySelected = !showOnlySelected;
+                });
+              },
+              child: Text(
+                showOnlySelected ? 'Show All Labels' : 'Show Selected Label',
+              ),
             ),
           )
         ],
@@ -57,6 +59,18 @@ class _HomePageState extends State<HomePage> {
       body: MoodMeterPicker(
         initialMoodPiece: MoodPiece.fromName('Hopeful'),
         onlyShowSelected: showOnlySelected,
+        selectedTextStyle: ThemedTextStyle.fromColors(
+          Theme.of(context).textTheme.titleMedium!.copyWith(
+                decoration: TextDecoration.underline,
+              ),
+          dark: const Color(0xFFFFFFFF),
+          light: const Color(0xFF1E1E1E),
+        ),
+        unselectedTextStyle: ThemedTextStyle.fromColors(
+          Theme.of(context).textTheme.labelLarge!,
+          dark: const Color(0xFFFFFFFF).withOpacity(0.7),
+          light: const Color(0xFF1E1E1E).withOpacity(0.7),
+        ),
         onMoodSelectionChanged: (moodPiece) {
           setState(() {
             emotion = moodPiece.moodName;

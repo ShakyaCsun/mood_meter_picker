@@ -11,6 +11,58 @@ import 'package:mood_meter_picker/src/widgets/my_hit_test_target.dart';
 
 typedef MoodPieceSelectionCallback = void Function(MoodPiece moodPiece);
 
+/// {@template themed_text_style}
+/// Class to hold [TextStyle]s for dark and light themes.
+///
+/// Required [TextStyle] can be accessed using [getValue] method.
+/// {@endtemplate}
+class ThemedTextStyle {
+  /// {@macro themed_text_style}
+  ThemedTextStyle({required this.dark, required this.light});
+
+  /// Constructs [ThemedTextStyle] from given [textStyle] varying only in
+  /// Color.
+  ///
+  /// This is the preferred way of creating [ThemedTextStyle].
+  ///
+  /// {@macro themed_text_style}
+  ThemedTextStyle.fromColors(
+    TextStyle textStyle, {
+
+    /// Text color to use if background is dark
+    required Color dark,
+
+    /// Text color to use if background is light
+    required Color light,
+  })  : dark = textStyle.copyWith(color: dark),
+        light = textStyle.copyWith(color: light);
+
+  /// Constructs [ThemedTextStyle] where both [dark] and [light] have
+  /// same [textStyle].
+  ///
+  /// This is not recommended.
+  ///
+  /// {@macro themed_text_style}
+  ThemedTextStyle.all(TextStyle textStyle)
+      : dark = textStyle,
+        light = textStyle;
+
+  /// [TextStyle] for when background is dark.
+  final TextStyle dark;
+
+  /// [TextStyle] for when background is light.
+  final TextStyle light;
+
+  TextStyle getValue(Brightness brightness) {
+    switch (brightness) {
+      case Brightness.dark:
+        return dark;
+      case Brightness.light:
+        return light;
+    }
+  }
+}
+
 class MoodMeterPicker extends StatelessWidget {
   const MoodMeterPicker({
     super.key,
@@ -26,15 +78,19 @@ class MoodMeterPicker extends StatelessWidget {
   final MoodQuadrant? initialMoodQuadrant;
   final MoodPieceSelectionCallback onMoodSelectionChanged;
 
-  /// [TextStyle] for unselected [MoodPiece] tile.
+  /// [ThemedTextStyle] for unselected [MoodPiece] tile.
   ///
-  /// Defaults to [Theme.of(context).textTheme.labelSmall]
-  final TextStyle? unselectedTextStyle;
+  /// Defaults to [Theme.of(context).textTheme.labelMedium] with
+  /// [Colors.white60] for [ThemedTextStyle.dark] and
+  /// [Colors.black54] for [ThemedTextStyle.light].
+  final ThemedTextStyle? unselectedTextStyle;
 
-  /// [TextStyle] for unselected [MoodPiece] tile.
+  /// [ThemedTextStyle] for unselected [MoodPiece] tile.
   ///
-  /// Defaults to [Theme.of(context).textTheme.bodyLarge]
-  final TextStyle? selectedTextStyle;
+  /// Defaults to [Theme.of(context).textTheme.bodyLarge] with
+  /// [Colors.white] for [ThemedTextStyle.dark] and
+  /// [Colors.black] for [ThemedTextStyle.light].
+  final ThemedTextStyle? selectedTextStyle;
 
   /// Only show mood name label on selected [MoodPiece] tile.
   final bool onlyShowSelected;
@@ -266,19 +322,22 @@ class _MoodPieceButton extends StatelessWidget {
             moodPiece.color,
           );
           final userSettings = context.read<UserCustomizableSettings>();
-          final selectedTextStyle = userSettings.selectedTextStyle ??
-              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: colorBrightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
-                  );
+          final textTheme = Theme.of(context).textTheme;
+          final selectedTextStyle =
+              userSettings.selectedTextStyle?.getValue(colorBrightness) ??
+                  ThemedTextStyle.fromColors(
+                    textTheme.bodyLarge ?? const TextStyle(),
+                    dark: Colors.white,
+                    light: Colors.black,
+                  ).getValue(colorBrightness);
 
-          final unselectedTextStyle = userSettings.unselectedTextStyle ??
-              Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: colorBrightness == Brightness.dark
-                        ? Colors.white60
-                        : Colors.black54,
-                  );
+          final unselectedTextStyle =
+              userSettings.unselectedTextStyle?.getValue(colorBrightness) ??
+                  ThemedTextStyle.fromColors(
+                    textTheme.labelMedium ?? const TextStyle(),
+                    dark: Colors.white60,
+                    light: Colors.black54,
+                  ).getValue(colorBrightness);
           return PortalTarget(
             visible: isSelected,
             anchor: moodPiece.alignedAnchor,
