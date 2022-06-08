@@ -754,13 +754,7 @@ class MoodPiece extends Equatable {
   /// Returns null when matching mood name is not found in the
   /// available 100 Mood Names.
   static MoodPiece? fromName(String moodName) {
-    try {
-      return allMoodPieces.firstWhere(
-        (moodPiece) => moodPiece.moodName == moodName,
-      );
-    } catch (_) {
-      return null;
-    }
+    return allMoodPiecesMap[moodName];
   }
 
   final String moodName;
@@ -797,20 +791,22 @@ class MoodPiece extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        moodName,
-        color,
-        pleasantness,
-        energy,
-      ];
+  List<Object> get props => [pleasantness, energy, moodName, color];
 }
 
 @internal
-final List<MoodPiece> allMoodPieces = [
+final allMoodPieces = List<MoodPiece>.unmodifiable(<MoodPiece>[
   for (final energyLevel in EnergyLevel.values)
     for (final pleasantnessLevel in PleasantnessLevel.values)
       MoodPiece.fromLevels(
         energyLevel: energyLevel,
         pleasantnessLevel: pleasantnessLevel,
       )
-];
+]);
+
+@internal
+final allMoodPiecesMap = Map<String, MoodPiece>.unmodifiable(
+  <String, MoodPiece>{
+    for (final moodPiece in allMoodPieces) moodPiece.moodName: moodPiece,
+  },
+);
