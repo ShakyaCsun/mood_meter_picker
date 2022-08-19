@@ -262,8 +262,8 @@ abstract class MoodMeterInitialState implements MoodMeterState {
       final MoodPiece? initialMoodPiece}) = _$MoodMeterInitialState;
 
   @override
-  MoodQuadrant get selectedMoodQuadrant => throw _privateConstructorUsedError;
-  MoodPiece? get initialMoodPiece => throw _privateConstructorUsedError;
+  MoodQuadrant get selectedMoodQuadrant;
+  MoodPiece? get initialMoodPiece;
   @override
   @JsonKey(ignore: true)
   _$$MoodMeterInitialStateCopyWith<_$MoodMeterInitialState> get copyWith =>
@@ -430,9 +430,9 @@ abstract class MoodMeterCompleteState implements MoodMeterState {
           required final MoodQuadrant selectedMoodQuadrant}) =
       _$MoodMeterCompleteState;
 
-  MoodPiece get selectedMoodPiece => throw _privateConstructorUsedError;
+  MoodPiece get selectedMoodPiece;
   @override
-  MoodQuadrant get selectedMoodQuadrant => throw _privateConstructorUsedError;
+  MoodQuadrant get selectedMoodQuadrant;
   @override
   @JsonKey(ignore: true)
   _$$MoodMeterCompleteStateCopyWith<_$MoodMeterCompleteState> get copyWith =>
