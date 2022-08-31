@@ -9,7 +9,3 @@ analyzer:
 linter:
   rules:
     public_member_api_docs: false
-    use_enums: true
-    depend_on_referenced_packages: true
-    use_colored_box: true
-    use_super_parameters: true
