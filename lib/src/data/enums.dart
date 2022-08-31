@@ -8,13 +8,13 @@ enum MoodQuadrant {
   String toString() {
     switch (this) {
       case MoodQuadrant.highEnergyUnpleasant:
-        return 'High Energy Unpleasant';
+        return 'High Energy, Unpleasant';
       case MoodQuadrant.highEnergyPleasant:
-        return 'High Energy Pleasant';
+        return 'High Energy, Pleasant';
       case MoodQuadrant.lowEnergyUnpleasant:
-        return 'Low Energy Unpleasant';
+        return 'Low Energy, Unpleasant';
       case MoodQuadrant.lowEnergyPleasant:
-        return 'Low Energy Pleasant';
+        return 'Low Energy, Pleasant';
     }
   }
 }
