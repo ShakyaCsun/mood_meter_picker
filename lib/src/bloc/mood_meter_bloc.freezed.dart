@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'mood_meter_bloc.dart';
 
@@ -29,10 +29,10 @@ mixin _$MoodMeterState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             MoodQuadrant selectedMoodQuadrant, MoodPiece? initialMoodPiece)?
         initial,
-    TResult Function(
+    TResult? Function(
             MoodPiece selectedMoodPiece, MoodQuadrant selectedMoodQuadrant)?
         complete,
   }) =>
@@ -56,8 +56,8 @@ mixin _$MoodMeterState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MoodMeterInitialState value)? initial,
-    TResult Function(MoodMeterCompleteState value)? complete,
+    TResult? Function(MoodMeterInitialState value)? initial,
+    TResult? Function(MoodMeterCompleteState value)? complete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,29 +77,32 @@ mixin _$MoodMeterState {
 abstract class $MoodMeterStateCopyWith<$Res> {
   factory $MoodMeterStateCopyWith(
           MoodMeterState value, $Res Function(MoodMeterState) then) =
-      _$MoodMeterStateCopyWithImpl<$Res>;
+      _$MoodMeterStateCopyWithImpl<$Res, MoodMeterState>;
+  @useResult
   $Res call({MoodQuadrant selectedMoodQuadrant});
 }
 
 /// @nodoc
-class _$MoodMeterStateCopyWithImpl<$Res>
+class _$MoodMeterStateCopyWithImpl<$Res, $Val extends MoodMeterState>
     implements $MoodMeterStateCopyWith<$Res> {
   _$MoodMeterStateCopyWithImpl(this._value, this._then);
 
-  final MoodMeterState _value;
   // ignore: unused_field
-  final $Res Function(MoodMeterState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedMoodQuadrant = freezed,
+    Object? selectedMoodQuadrant = null,
   }) {
     return _then(_value.copyWith(
-      selectedMoodQuadrant: selectedMoodQuadrant == freezed
+      selectedMoodQuadrant: null == selectedMoodQuadrant
           ? _value.selectedMoodQuadrant
           : selectedMoodQuadrant // ignore: cast_nullable_to_non_nullable
               as MoodQuadrant,
-    ));
+    ) as $Val);
   }
 }
 
@@ -110,31 +113,30 @@ abstract class _$$MoodMeterInitialStateCopyWith<$Res>
           $Res Function(_$MoodMeterInitialState) then) =
       __$$MoodMeterInitialStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({MoodQuadrant selectedMoodQuadrant, MoodPiece? initialMoodPiece});
 }
 
 /// @nodoc
 class __$$MoodMeterInitialStateCopyWithImpl<$Res>
-    extends _$MoodMeterStateCopyWithImpl<$Res>
+    extends _$MoodMeterStateCopyWithImpl<$Res, _$MoodMeterInitialState>
     implements _$$MoodMeterInitialStateCopyWith<$Res> {
   __$$MoodMeterInitialStateCopyWithImpl(_$MoodMeterInitialState _value,
       $Res Function(_$MoodMeterInitialState) _then)
-      : super(_value, (v) => _then(v as _$MoodMeterInitialState));
+      : super(_value, _then);
 
-  @override
-  _$MoodMeterInitialState get _value => super._value as _$MoodMeterInitialState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedMoodQuadrant = freezed,
+    Object? selectedMoodQuadrant = null,
     Object? initialMoodPiece = freezed,
   }) {
     return _then(_$MoodMeterInitialState(
-      selectedMoodQuadrant: selectedMoodQuadrant == freezed
+      selectedMoodQuadrant: null == selectedMoodQuadrant
           ? _value.selectedMoodQuadrant
           : selectedMoodQuadrant // ignore: cast_nullable_to_non_nullable
               as MoodQuadrant,
-      initialMoodPiece: initialMoodPiece == freezed
+      initialMoodPiece: freezed == initialMoodPiece
           ? _value.initialMoodPiece
           : initialMoodPiece // ignore: cast_nullable_to_non_nullable
               as MoodPiece?,
@@ -163,20 +165,19 @@ class _$MoodMeterInitialState implements MoodMeterInitialState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodMeterInitialState &&
-            const DeepCollectionEquality()
-                .equals(other.selectedMoodQuadrant, selectedMoodQuadrant) &&
-            const DeepCollectionEquality()
-                .equals(other.initialMoodPiece, initialMoodPiece));
+            (identical(other.selectedMoodQuadrant, selectedMoodQuadrant) ||
+                other.selectedMoodQuadrant == selectedMoodQuadrant) &&
+            (identical(other.initialMoodPiece, initialMoodPiece) ||
+                other.initialMoodPiece == initialMoodPiece));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selectedMoodQuadrant),
-      const DeepCollectionEquality().hash(initialMoodPiece));
+  int get hashCode =>
+      Object.hash(runtimeType, selectedMoodQuadrant, initialMoodPiece);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$MoodMeterInitialStateCopyWith<_$MoodMeterInitialState> get copyWith =>
       __$$MoodMeterInitialStateCopyWithImpl<_$MoodMeterInitialState>(
           this, _$identity);
@@ -197,10 +198,10 @@ class _$MoodMeterInitialState implements MoodMeterInitialState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             MoodQuadrant selectedMoodQuadrant, MoodPiece? initialMoodPiece)?
         initial,
-    TResult Function(
+    TResult? Function(
             MoodPiece selectedMoodPiece, MoodQuadrant selectedMoodQuadrant)?
         complete,
   }) {
@@ -236,8 +237,8 @@ class _$MoodMeterInitialState implements MoodMeterInitialState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MoodMeterInitialState value)? initial,
-    TResult Function(MoodMeterCompleteState value)? complete,
+    TResult? Function(MoodMeterInitialState value)? initial,
+    TResult? Function(MoodMeterCompleteState value)? complete,
   }) {
     return initial?.call(this);
   }
@@ -277,32 +278,30 @@ abstract class _$$MoodMeterCompleteStateCopyWith<$Res>
           $Res Function(_$MoodMeterCompleteState) then) =
       __$$MoodMeterCompleteStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({MoodPiece selectedMoodPiece, MoodQuadrant selectedMoodQuadrant});
 }
 
 /// @nodoc
 class __$$MoodMeterCompleteStateCopyWithImpl<$Res>
-    extends _$MoodMeterStateCopyWithImpl<$Res>
+    extends _$MoodMeterStateCopyWithImpl<$Res, _$MoodMeterCompleteState>
     implements _$$MoodMeterCompleteStateCopyWith<$Res> {
   __$$MoodMeterCompleteStateCopyWithImpl(_$MoodMeterCompleteState _value,
       $Res Function(_$MoodMeterCompleteState) _then)
-      : super(_value, (v) => _then(v as _$MoodMeterCompleteState));
+      : super(_value, _then);
 
-  @override
-  _$MoodMeterCompleteState get _value =>
-      super._value as _$MoodMeterCompleteState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedMoodPiece = freezed,
-    Object? selectedMoodQuadrant = freezed,
+    Object? selectedMoodPiece = null,
+    Object? selectedMoodQuadrant = null,
   }) {
     return _then(_$MoodMeterCompleteState(
-      selectedMoodPiece: selectedMoodPiece == freezed
+      selectedMoodPiece: null == selectedMoodPiece
           ? _value.selectedMoodPiece
           : selectedMoodPiece // ignore: cast_nullable_to_non_nullable
               as MoodPiece,
-      selectedMoodQuadrant: selectedMoodQuadrant == freezed
+      selectedMoodQuadrant: null == selectedMoodQuadrant
           ? _value.selectedMoodQuadrant
           : selectedMoodQuadrant // ignore: cast_nullable_to_non_nullable
               as MoodQuadrant,
@@ -331,20 +330,19 @@ class _$MoodMeterCompleteState implements MoodMeterCompleteState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodMeterCompleteState &&
-            const DeepCollectionEquality()
-                .equals(other.selectedMoodPiece, selectedMoodPiece) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedMoodQuadrant, selectedMoodQuadrant));
+            (identical(other.selectedMoodPiece, selectedMoodPiece) ||
+                other.selectedMoodPiece == selectedMoodPiece) &&
+            (identical(other.selectedMoodQuadrant, selectedMoodQuadrant) ||
+                other.selectedMoodQuadrant == selectedMoodQuadrant));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selectedMoodPiece),
-      const DeepCollectionEquality().hash(selectedMoodQuadrant));
+  int get hashCode =>
+      Object.hash(runtimeType, selectedMoodPiece, selectedMoodQuadrant);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$MoodMeterCompleteStateCopyWith<_$MoodMeterCompleteState> get copyWith =>
       __$$MoodMeterCompleteStateCopyWithImpl<_$MoodMeterCompleteState>(
           this, _$identity);
@@ -365,10 +363,10 @@ class _$MoodMeterCompleteState implements MoodMeterCompleteState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             MoodQuadrant selectedMoodQuadrant, MoodPiece? initialMoodPiece)?
         initial,
-    TResult Function(
+    TResult? Function(
             MoodPiece selectedMoodPiece, MoodQuadrant selectedMoodQuadrant)?
         complete,
   }) {
@@ -404,8 +402,8 @@ class _$MoodMeterCompleteState implements MoodMeterCompleteState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(MoodMeterInitialState value)? initial,
-    TResult Function(MoodMeterCompleteState value)? complete,
+    TResult? Function(MoodMeterInitialState value)? initial,
+    TResult? Function(MoodMeterCompleteState value)? complete,
   }) {
     return complete?.call(this);
   }
