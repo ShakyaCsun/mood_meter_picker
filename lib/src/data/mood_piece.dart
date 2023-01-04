@@ -86,7 +86,7 @@ class MoodPiece extends Equatable {
         switch (pleasantnessLevel) {
           case PleasantnessLevel.low5:
             return MoodPiece._(
-              moodName: 'Despodent',
+              moodName: 'Despondent',
               color: const Color(0xFF144EB9),
               pleasantness: pleasantnessLevel,
               energy: energyLevel,
@@ -611,7 +611,7 @@ class MoodPiece extends Equatable {
             );
           case PleasantnessLevel.low3:
             return MoodPiece._(
-              moodName: 'Frustated',
+              moodName: 'Frustrated',
               color: const Color(0xFFD42832),
               pleasantness: pleasantnessLevel,
               energy: energyLevel,
