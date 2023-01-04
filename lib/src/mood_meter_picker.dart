@@ -5,70 +5,18 @@ import 'package:flutter_portal/flutter_portal.dart';
 import 'package:mood_meter_picker/mood_meter_picker.dart';
 import 'package:mood_meter_picker/src/bloc/mood_meter_bloc.dart';
 import 'package:mood_meter_picker/src/data/extensions.dart';
-import 'package:mood_meter_picker/src/data/user_customizable_settings.dart';
+import 'package:mood_meter_picker/src/data/mood_picker_settings.dart';
 import 'package:mood_meter_picker/src/widgets/animated_overflow_box_align.dart';
 import 'package:mood_meter_picker/src/widgets/my_hit_test_target.dart';
+import 'package:mood_meter_picker/src/widgets/selected_mood_tile.dart';
 
 typedef MoodPieceSelectionCallback = void Function(MoodPiece moodPiece);
-
-/// {@template themed_text_style}
-/// Class to hold [TextStyle]s for dark and light themes.
-///
-/// Required [TextStyle] can be accessed using [getValue] method.
-/// {@endtemplate}
-class ThemedTextStyle {
-  /// {@macro themed_text_style}
-  ThemedTextStyle({required this.dark, required this.light});
-
-  /// Constructs [ThemedTextStyle] from given [textStyle] varying only in
-  /// Color.
-  ///
-  /// This is the preferred way of creating [ThemedTextStyle].
-  ///
-  /// {@macro themed_text_style}
-  ThemedTextStyle.fromColors(
-    TextStyle textStyle, {
-
-    /// Text color to use if background is dark
-    required Color dark,
-
-    /// Text color to use if background is light
-    required Color light,
-  })  : dark = textStyle.copyWith(color: dark),
-        light = textStyle.copyWith(color: light);
-
-  /// Constructs [ThemedTextStyle] where both [dark] and [light] have
-  /// same [textStyle].
-  ///
-  /// This is not recommended.
-  ///
-  /// {@macro themed_text_style}
-  ThemedTextStyle.all(TextStyle textStyle)
-      : dark = textStyle,
-        light = textStyle;
-
-  /// [TextStyle] for when background is dark.
-  final TextStyle dark;
-
-  /// [TextStyle] for when background is light.
-  final TextStyle light;
-
-  TextStyle getValue(Brightness brightness) {
-    switch (brightness) {
-      case Brightness.dark:
-        return dark;
-      case Brightness.light:
-        return light;
-    }
-  }
-}
 
 class MoodMeterPicker extends StatelessWidget {
   const MoodMeterPicker({
     super.key,
     this.initialMoodQuadrant,
     this.initialMoodPiece,
-    this.onlyShowSelected = false,
     this.selectedTextStyle,
     this.unselectedTextStyle,
     required this.onMoodSelectionChanged,
@@ -78,45 +26,43 @@ class MoodMeterPicker extends StatelessWidget {
   final MoodQuadrant? initialMoodQuadrant;
   final MoodPieceSelectionCallback onMoodSelectionChanged;
 
-  /// [ThemedTextStyle] for unselected [MoodPiece] tile.
+  /// [TextStyle] for unselected [MoodPiece] tile.
   ///
   /// Defaults to [Theme.of(context).textTheme.labelMedium] with
-  /// [Colors.white60] for [ThemedTextStyle.dark] and
-  /// [Colors.black54] for [ThemedTextStyle.light].
-  final ThemedTextStyle? unselectedTextStyle;
+  /// [Colors.white60] color
+  final TextStyle? unselectedTextStyle;
 
-  /// [ThemedTextStyle] for unselected [MoodPiece] tile.
+  /// [TextStyle] for unselected [MoodPiece] tile.
   ///
   /// Defaults to [Theme.of(context).textTheme.bodyLarge] with
-  /// [Colors.white] for [ThemedTextStyle.dark] and
-  /// [Colors.black] for [ThemedTextStyle.light].
-  final ThemedTextStyle? selectedTextStyle;
-
-  /// Only show mood name label on selected [MoodPiece] tile.
-  final bool onlyShowSelected;
+  /// [Colors.white] color.
+  final TextStyle? selectedTextStyle;
 
   @override
   Widget build(BuildContext context) {
-    final userSettings = UserCustomizableSettings(
-      onlyShowSelected: onlyShowSelected,
+    final userSettings = MoodPickerSettings(
       selectedTextStyle: selectedTextStyle,
       unselectedTextStyle: unselectedTextStyle,
     );
 
-    return Portal(
-      child: RepositoryProvider.value(
-        value: userSettings,
-        child: BlocProvider(
-          create: (context) {
-            final moodPiece = initialMoodPiece;
-            if (moodPiece != null) {
-              return MoodMeterBloc(moodQuadrant: moodPiece.moodQuadrant)
-                ..add(MoodPieceSelected(moodPiece: moodPiece));
-            }
-            return MoodMeterBloc(moodQuadrant: initialMoodQuadrant);
-          },
-          child: _MoodPickerView(
-            onMoodSelectionChanged: onMoodSelectionChanged,
+    return Material(
+      clipBehavior: Clip.hardEdge,
+      child: Portal(
+        child: RepositoryProvider.value(
+          value: userSettings,
+          child: BlocProvider(
+            create: (context) {
+              final moodPiece = initialMoodPiece;
+              if (moodPiece != null) {
+                return MoodMeterBloc(
+                  moodQuadrant: moodPiece.moodQuadrant,
+                )..add(MoodPieceSelected(moodPiece: moodPiece));
+              }
+              return MoodMeterBloc(moodQuadrant: initialMoodQuadrant);
+            },
+            child: _MoodPickerView(
+              onMoodSelectionChanged: onMoodSelectionChanged,
+            ),
           ),
         ),
       ),
@@ -318,43 +264,30 @@ class _MoodPieceButton extends StatelessWidget {
               isSelected = selectedMoodPiece == moodPiece;
             },
           );
-          final colorBrightness = ThemeData.estimateBrightnessForColor(
-            moodPiece.color,
-          );
-          final userSettings = context.read<UserCustomizableSettings>();
+          final userSettings = context.read<MoodPickerSettings>();
           final textTheme = Theme.of(context).textTheme;
-          final selectedTextStyle =
-              userSettings.selectedTextStyle?.getValue(colorBrightness) ??
-                  ThemedTextStyle.fromColors(
-                    textTheme.bodyLarge ?? const TextStyle(),
-                    dark: Colors.white,
-                    light: Colors.black,
-                  ).getValue(colorBrightness);
+          final selectedTextStyle = userSettings.selectedTextStyle ??
+              (textTheme.bodyLarge ?? const TextStyle()).copyWith(
+                color: Colors.white,
+              );
+          final unselectedTextStyle = userSettings.unselectedTextStyle ??
+              (textTheme.labelMedium ?? const TextStyle())
+                  .copyWith(color: Colors.white60);
 
-          final unselectedTextStyle =
-              userSettings.unselectedTextStyle?.getValue(colorBrightness) ??
-                  ThemedTextStyle.fromColors(
-                    textTheme.labelMedium ?? const TextStyle(),
-                    dark: Colors.white60,
-                    light: Colors.black54,
-                  ).getValue(colorBrightness);
+          final labelOnTop =
+              !(moodPiece.isTopMost || moodPiece.energy == EnergyLevel.low1);
+
           return PortalTarget(
             visible: isSelected,
-            anchor: moodPiece.alignedAnchor,
+            anchor: Aligned.center,
             portalFollower: IgnorePointer(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.white,
-                  ),
-                  color: moodPiece.color,
-                ),
-                child: Center(
-                  child: Text(
-                    moodPiece.moodName,
-                    style: selectedTextStyle,
-                  ),
-                ),
+              child: SelectedMoodTile(
+                moodPiece: moodPiece,
+                height: height * 1.2,
+                width: width * 1.2,
+                selectedTextStyle: selectedTextStyle,
+                unselectedTextStyle: unselectedTextStyle,
+                labelOnTop: labelOnTop,
               ),
             ),
             child: Container(
@@ -363,14 +296,6 @@ class _MoodPieceButton extends StatelessWidget {
               decoration: BoxDecoration(
                 color: moodPiece.color,
               ),
-              child: userSettings.onlyShowSelected
-                  ? null
-                  : Center(
-                      child: Text(
-                        moodPiece.moodName,
-                        style: unselectedTextStyle,
-                      ),
-                    ),
             ),
           );
         },

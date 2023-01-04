@@ -1,85 +1,51 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_portal/flutter_portal.dart';
 import 'package:mood_meter_picker/mood_meter_picker.dart';
 
 extension MoodPieceExtensions on MoodPiece {
-  Aligned get alignedAnchor {
-    final isLeftMost = pleasantness == PleasantnessLevel.low5;
-    final isRightMost = pleasantness == PleasantnessLevel.high5;
-    final isBottomMost = energy == EnergyLevel.low5;
-    final isTopMost = energy == EnergyLevel.high5;
+  bool get isLeftMost => pleasantness == PleasantnessLevel.low5;
 
-    const addFactor = 0.12;
+  bool get isRightMost => pleasantness == PleasantnessLevel.high5;
 
-    if (isLeftMost) {
-      if (isTopMost) {
-        return const Aligned(
-          follower: Alignment.topLeft,
-          target: Alignment.topLeft,
-          widthFactor: 1 + addFactor,
-          heightFactor: 1 + addFactor,
-        );
-      } else if (isBottomMost) {
-        return const Aligned(
-          follower: Alignment.bottomLeft,
-          target: Alignment.bottomLeft,
-          widthFactor: 1 + addFactor,
-          heightFactor: 1 + addFactor,
-        );
-      }
-      return const Aligned(
-        follower: Alignment.centerLeft,
-        target: Alignment.centerLeft,
-        widthFactor: 1 + addFactor,
-        heightFactor: 1 + addFactor * 2,
+  bool get isBottomMost => energy == EnergyLevel.low5;
+
+  bool get isTopMost => energy == EnergyLevel.high5;
+
+  MoodPiece? get left {
+    if (!isLeftMost) {
+      return MoodPiece.fromLevels(
+        energyLevel: energy,
+        pleasantnessLevel: pleasantness.previous!,
       );
     }
+    return null;
+  }
 
-    if (isRightMost) {
-      if (isTopMost) {
-        return const Aligned(
-          follower: Alignment.topRight,
-          target: Alignment.topRight,
-          widthFactor: 1 + addFactor,
-          heightFactor: 1 + addFactor,
-        );
-      } else if (isBottomMost) {
-        return const Aligned(
-          follower: Alignment.bottomRight,
-          target: Alignment.bottomRight,
-          widthFactor: 1 + addFactor,
-          heightFactor: 1 + addFactor,
-        );
-      }
-      return const Aligned(
-        follower: Alignment.centerRight,
-        target: Alignment.centerRight,
-        widthFactor: 1 + addFactor,
-        heightFactor: 1 + addFactor * 2,
+  MoodPiece? get right {
+    if (!isRightMost) {
+      return MoodPiece.fromLevels(
+        energyLevel: energy,
+        pleasantnessLevel: pleasantness.next!,
       );
     }
+    return null;
+  }
 
-    if (isTopMost) {
-      return const Aligned(
-        follower: Alignment.topCenter,
-        target: Alignment.topCenter,
-        widthFactor: 1 + addFactor * 2,
-        heightFactor: 1 + addFactor,
-      );
-    } else if (isBottomMost) {
-      return const Aligned(
-        follower: Alignment.bottomCenter,
-        target: Alignment.bottomCenter,
-        widthFactor: 1 + addFactor * 2,
-        heightFactor: 1 + addFactor,
+  MoodPiece? get up {
+    if (!isTopMost) {
+      return MoodPiece.fromLevels(
+        energyLevel: energy.next!,
+        pleasantnessLevel: pleasantness,
       );
     }
+    return null;
+  }
 
-    return const Aligned(
-      follower: Alignment.center,
-      target: Alignment.center,
-      widthFactor: 1 + addFactor * 2,
-      heightFactor: 1 + addFactor * 2,
-    );
+  MoodPiece? get down {
+    if (!isBottomMost) {
+      return MoodPiece.fromLevels(
+        energyLevel: energy.previous!,
+        pleasantnessLevel: pleasantness,
+      );
+    }
+    return null;
   }
 }
