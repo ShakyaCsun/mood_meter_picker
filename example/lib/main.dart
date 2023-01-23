@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_meter_picker/mood_meter_picker.dart';
+import 'package:mood_picker_example/selected_mood_piece.dart';
 
 void main() {
   runApp(const ExampleApp());
@@ -10,43 +12,41 @@ class ExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF11B1F3),
+    return ProviderScope(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData.from(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xFF11B1F3),
+          ),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+        home: const HomePage(),
       ),
-      home: const HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({
     super.key,
   });
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  String emotion = '...';
-  MoodQuadrant quadrant = MoodQuadrant.highEnergyPleasant;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('$quadrant'),
+        title: Consumer(
+          builder: (context, ref, child) {
+            final quadrant = ref.watch(moodQuadrantProvider);
+            return Text('$quadrant');
+          },
+        ),
       ),
       body: Column(
         children: [
           Expanded(
             child: MoodMeterPicker(
-              initialMoodPiece: MoodPiece.fromName('Hopeful'),
               selectedTextStyle: const TextStyle(
                 fontSize: 20,
                 color: Color(0xFFFFFFFF),
@@ -58,17 +58,22 @@ class _HomePageState extends State<HomePage> {
                 fontWeight: FontWeight.w500,
               ),
               onMoodSelectionChanged: (moodPiece) {
-                setState(() {
-                  emotion = moodPiece.moodName;
-                  quadrant = moodPiece.moodQuadrant;
-                });
+                ref.read(selectedMoodPieceProvider.notifier).moodPieceChanged(
+                      moodPiece,
+                    );
               },
             ),
           ),
-          ListTile(
-            title: Text('I feel $emotion'.toUpperCase()),
-            textColor: Colors.white,
-            tileColor: Colors.black,
+          Consumer(
+            builder: (context, ref, child) {
+              final emotion =
+                  ref.watch(selectedMoodPieceProvider)?.moodName ?? '...';
+              return ListTile(
+                title: Text('I feel $emotion'.toUpperCase()),
+                textColor: Colors.white,
+                tileColor: Colors.black,
+              );
+            },
           ),
         ],
       ),
