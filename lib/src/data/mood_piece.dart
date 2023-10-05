@@ -801,7 +801,7 @@ final allMoodPieces = List<MoodPiece>.unmodifiable(<MoodPiece>[
       MoodPiece.fromLevels(
         energyLevel: energyLevel,
         pleasantnessLevel: pleasantnessLevel,
-      )
+      ),
 ]);
 
 @internal

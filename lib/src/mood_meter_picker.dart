@@ -14,12 +14,12 @@ typedef MoodPieceSelectionCallback = void Function(MoodPiece moodPiece);
 
 class MoodMeterPicker extends StatelessWidget {
   const MoodMeterPicker({
+    required this.onMoodSelectionChanged,
     super.key,
     this.initialMoodQuadrant,
     this.initialMoodPiece,
     this.selectedTextStyle,
     this.unselectedTextStyle,
-    required this.onMoodSelectionChanged,
   });
 
   final MoodPiece? initialMoodPiece;
@@ -124,13 +124,12 @@ class _MoodPickerBody extends StatelessWidget {
 
   ///
   void _onPointerLetGo(BuildContext context) {
-    context.read<MoodMeterBloc>().state.whenOrNull(
-      complete: (selectedMoodPiece, _) {
-        context.read<MoodMeterBloc>().add(
-              MoodPieceSelected(moodPiece: selectedMoodPiece),
-            );
-      },
-    );
+    final state = context.read<MoodMeterBloc>().state;
+    if (state case MoodMeterCompleteState(:final selectedMoodPiece)) {
+      context.read<MoodMeterBloc>().add(
+            MoodPieceSelected(moodPiece: selectedMoodPiece),
+          );
+    }
   }
 
   @override
@@ -234,36 +233,26 @@ class _MoodPieceButton extends StatelessWidget {
       },
       child: BlocBuilder<MoodMeterBloc, MoodMeterState>(
         buildWhen: (previous, current) {
-          final isPreviousMoodThis = previous.when<bool>(
-            initial: (_, initialMoodPiece) {
-              return false;
-            },
-            complete: (selectedMoodPiece, _) {
-              return selectedMoodPiece == moodPiece;
-            },
-          );
-          final isCurrentMoodThis = current.when<bool>(
-            initial: (selectedMoodQuadrant, initialMoodPiece) {
-              return false;
-            },
-            complete: (selectedMoodPiece, _) {
-              return selectedMoodPiece == moodPiece;
-            },
-          );
+          final isPreviousMoodThis = switch (previous) {
+            MoodMeterInitialState() => false,
+            MoodMeterCompleteState(:final selectedMoodPiece) =>
+              selectedMoodPiece == moodPiece,
+          };
+          final isCurrentMoodThis = switch (current) {
+            MoodMeterInitialState() => false,
+            MoodMeterCompleteState(:final selectedMoodPiece) =>
+              selectedMoodPiece == moodPiece
+          };
           return isPreviousMoodThis || isCurrentMoodThis;
         },
         builder: (context, state) {
           var isSelected = false;
-          state.when(
-            initial: (selectedMoodQuadrant, initialMoodPiece) {
-              if (initialMoodPiece != null) {
-                isSelected = initialMoodPiece == moodPiece;
-              }
-            },
-            complete: (selectedMoodPiece, selectedMoodQuadrant) {
+          switch (state) {
+            case MoodMeterInitialState(:final initialMoodPiece):
+              isSelected = initialMoodPiece == moodPiece;
+            case MoodMeterCompleteState(:final selectedMoodPiece):
               isSelected = selectedMoodPiece == moodPiece;
-            },
-          );
+          }
           final userSettings = context.read<MoodPickerSettings>();
           final textTheme = Theme.of(context).textTheme;
           final selectedTextStyle = userSettings.selectedTextStyle ??
