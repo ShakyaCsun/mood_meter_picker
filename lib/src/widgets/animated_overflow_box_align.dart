@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 class AnimatedOverflowBoxAlign extends ImplicitlyAnimatedWidget {
   /// {@macro animated_overflow_box_align}
   const AnimatedOverflowBoxAlign({
+    required super.duration,
     super.key,
     this.alignment = Alignment.center,
     this.child,
@@ -22,7 +23,6 @@ class AnimatedOverflowBoxAlign extends ImplicitlyAnimatedWidget {
     this.minWidth,
     this.maxWidth,
     super.curve,
-    required super.duration,
     super.onEnd,
   });
 

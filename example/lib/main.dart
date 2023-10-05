@@ -1,77 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:mood_meter_picker/mood_meter_picker.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mood_picker_example/routes/routes.dart';
+import 'package:mood_picker_example/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const ExampleApp());
+Future<void> main() async {
+  usePathUrlStrategy();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
+      child: const ExampleApp(),
+    ),
+  );
 }
 
-class ExampleApp extends StatelessWidget {
+final _router = GoRouter(
+  debugLogDiagnostics: true,
+  routes: Routes.appRoutes,
+  navigatorKey: Routes.rootNavigatorKey,
+);
+
+class ExampleApp extends ConsumerWidget {
   const ExampleApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
+      title: 'Mood Meter Picker Demo',
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF11B1F3),
+          seedColor: const Color(0xFF5EEDED),
         ),
         useMaterial3: true,
       ),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({
-    super.key,
-  });
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  String emotion = '...';
-  MoodQuadrant quadrant = MoodQuadrant.highEnergyPleasant;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('$quadrant'),
+      darkTheme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFDEC1DE),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: MoodMeterPicker(
-              initialMoodPiece: MoodPiece.fromName('Hopeful'),
-              selectedTextStyle: const TextStyle(
-                fontSize: 20,
-                color: Color(0xFFFFFFFF),
-                fontWeight: FontWeight.w600,
-              ),
-              unselectedTextStyle: const TextStyle(
-                fontSize: 16,
-                color: Color(0xAFFFFFFF),
-                fontWeight: FontWeight.w500,
-              ),
-              onMoodSelectionChanged: (moodPiece) {
-                setState(() {
-                  emotion = moodPiece.moodName;
-                  quadrant = moodPiece.moodQuadrant;
-                });
-              },
-            ),
-          ),
-          ListTile(
-            title: Text('I feel $emotion'.toUpperCase()),
-            textColor: Colors.white,
-            tileColor: Colors.black,
-          ),
-        ],
-      ),
+      routerConfig: _router,
     );
   }
 }

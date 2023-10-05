@@ -1,7 +1,7 @@
 part of 'mood_meter_bloc.dart';
 
 @freezed
-class MoodMeterState with _$MoodMeterState {
+sealed class MoodMeterState with _$MoodMeterState {
   const factory MoodMeterState.initial({
     required MoodQuadrant selectedMoodQuadrant,
     MoodPiece? initialMoodPiece,

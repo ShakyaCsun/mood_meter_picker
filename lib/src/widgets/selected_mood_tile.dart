@@ -4,13 +4,13 @@ import 'package:mood_meter_picker/src/data/extensions.dart';
 
 class SelectedMoodTile extends StatelessWidget {
   const SelectedMoodTile({
-    super.key,
     required this.moodPiece,
     required this.height,
     required this.width,
-    this.labelOnTop = true,
     required this.selectedTextStyle,
     required this.unselectedTextStyle,
+    super.key,
+    this.labelOnTop = true,
   });
 
   final MoodPiece moodPiece;
@@ -139,7 +139,6 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
               halfMainHeight,
             );
             offset += const Offset(_extraPadding, -_extraPadding);
-            break;
           case _FallbackAnchor.right:
             offset -= topSize.bottomRight(Offset.zero);
             offset += Offset(
@@ -147,7 +146,6 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
               -halfMainHeight,
             );
             offset -= const Offset(_extraPadding, _extraPadding);
-            break;
         }
         positionChild(
           _Slot.top,
@@ -176,7 +174,6 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
               halfMainHeight,
             );
             offset += const Offset(_extraPadding, _extraPadding);
-            break;
           case _FallbackAnchor.right:
             offset -= bottomSize.topRight(Offset.zero);
             offset += Offset(
@@ -184,7 +181,6 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
               halfMainHeight,
             );
             offset += const Offset(-_extraPadding, _extraPadding);
-            break;
         }
         positionChild(
           _Slot.bottom,

@@ -5,8 +5,8 @@ import 'package:mood_meter_picker/mood_meter_picker.dart';
 // Ref: https://stackoverflow.com/questions/50639652/how-to-swipe-drag-2-or-more-buttons-in-a-grid-of-buttons-using-flutter
 class MyHitTestTarget extends SingleChildRenderObjectWidget {
   const MyHitTestTarget({
-    super.key,
     required this.moodPiece,
+    super.key,
     super.child,
   });
 

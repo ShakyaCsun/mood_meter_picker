@@ -1,6 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.srishan.mood_picker_example">
-   <application
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
         android:label="mood_picker_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
