@@ -12,7 +12,7 @@ part of 'mood_entry_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MoodEntryState {}
@@ -33,6 +33,9 @@ class _$MoodEntryStateCopyWithImpl<$Res, $Val extends MoodEntryState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -49,6 +52,9 @@ class __$$MoodEntryInitialImplCopyWithImpl<$Res>
   __$$MoodEntryInitialImplCopyWithImpl(_$MoodEntryInitialImpl _value,
       $Res Function(_$MoodEntryInitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -66,11 +72,11 @@ class _$MoodEntryInitialImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'MoodEntryState.initial'));
+    properties..add(DiagnosticsProperty('type', 'MoodEntryState.initial'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$MoodEntryInitialImpl);
   }
@@ -97,6 +103,9 @@ class __$$MoodEntryInProgressImplCopyWithImpl<$Res>
   __$$MoodEntryInProgressImplCopyWithImpl(_$MoodEntryInProgressImpl _value,
       $Res Function(_$MoodEntryInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -114,11 +123,11 @@ class _$MoodEntryInProgressImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'MoodEntryState.inProgress'));
+    properties..add(DiagnosticsProperty('type', 'MoodEntryState.inProgress'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodEntryInProgressImpl);
@@ -146,6 +155,9 @@ class __$$MoodEntrySuccessImplCopyWithImpl<$Res>
   __$$MoodEntrySuccessImplCopyWithImpl(_$MoodEntrySuccessImpl _value,
       $Res Function(_$MoodEntrySuccessImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -163,11 +175,11 @@ class _$MoodEntrySuccessImpl
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'MoodEntryState.success'));
+    properties..add(DiagnosticsProperty('type', 'MoodEntryState.success'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$MoodEntrySuccessImpl);
   }
@@ -197,6 +209,8 @@ class __$$MoodEntryFailureImplCopyWithImpl<$Res>
       $Res Function(_$MoodEntryFailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -235,7 +249,7 @@ class _$MoodEntryFailureImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodEntryFailureImpl &&
@@ -245,7 +259,9 @@ class _$MoodEntryFailureImpl
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoodEntryFailureImplCopyWith<_$MoodEntryFailureImpl> get copyWith =>
@@ -258,7 +274,10 @@ abstract class MoodEntryFailure implements MoodEntryState {
       _$MoodEntryFailureImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MoodEntryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoodEntryFailureImplCopyWith<_$MoodEntryFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

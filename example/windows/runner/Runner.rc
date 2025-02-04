@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.srishan" "\0"
+            VALUE "CompanyName", "com.shakyacsun" "\0"
             VALUE "FileDescription", "mood_picker_example" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "mood_picker_example" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.srishan. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.shakyacsun. All rights reserved." "\0"
             VALUE "OriginalFilename", "mood_picker_example.exe" "\0"
             VALUE "ProductName", "mood_picker_example" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

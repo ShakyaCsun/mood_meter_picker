@@ -6,7 +6,7 @@ part of 'mood_entry_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$moodQuadrantHash() => r'f34fbadeb6f364a555a4517a6f5d275afb60c0ec';
+String _$moodQuadrantHash() => r'568f6f99e5909493abb7faa786e9581a947594e8';
 
 /// See also [moodQuadrant].
 @ProviderFor(moodQuadrant)
@@ -19,6 +19,8 @@ final moodQuadrantProvider = AutoDisposeProvider<MoodQuadrant>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef MoodQuadrantRef = AutoDisposeProviderRef<MoodQuadrant>;
 String _$selectedMoodPieceHash() => r'1d15e6cddb67e85755aa5c52ee0dd81f744c1866';
 
@@ -52,4 +54,4 @@ final newMoodEntryProvider =
 
 typedef _$NewMoodEntry = AutoDisposeNotifier<MoodEntryState>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, inference_failure_on_uninitialized_variable, inference_failure_on_function_return_type, inference_failure_on_untyped_parameter
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

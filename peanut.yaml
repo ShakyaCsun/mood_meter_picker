@@ -1,4 +1,4 @@
 directories:
   - example/web
 
-extra-args: '--base-href /mood_meter_picker/'
+extra-args: '--wasm --base-href=/mood_meter_picker/'

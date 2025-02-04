@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mood_meter_picker/mood_meter_picker.dart';
 import 'package:mood_picker_example/moods_repository/models/models.dart';
@@ -15,6 +16,7 @@ class SelectedMoodPiece extends _$SelectedMoodPiece {
     return null;
   }
 
+  // This is how Riverpod works
   // ignore: use_setters_to_change_properties
   void moodPieceChanged(MoodPiece moodPiece) {
     state = moodPiece;
@@ -22,7 +24,7 @@ class SelectedMoodPiece extends _$SelectedMoodPiece {
 }
 
 @riverpod
-MoodQuadrant moodQuadrant(MoodQuadrantRef ref) {
+MoodQuadrant moodQuadrant(Ref ref) {
   return ref.watch(selectedMoodPieceProvider)?.moodQuadrant ??
       MoodQuadrant.highEnergyPleasant;
 }

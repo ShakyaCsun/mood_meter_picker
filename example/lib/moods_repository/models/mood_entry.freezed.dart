@@ -12,7 +12,7 @@ part of 'mood_entry.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MoodEntry _$MoodEntryFromJson(Map<String, dynamic> json) {
   return _MoodEntry.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$MoodEntry {
   String get moodName => throw _privateConstructorUsedError;
   String get remarks => throw _privateConstructorUsedError;
 
+  /// Serializes this MoodEntry to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MoodEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MoodEntryCopyWith<MoodEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$MoodEntryCopyWithImpl<$Res, $Val extends MoodEntry>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MoodEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$MoodEntryImplCopyWithImpl<$Res>
       _$MoodEntryImpl _value, $Res Function(_$MoodEntryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoodEntry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +162,7 @@ class _$MoodEntryImpl extends _MoodEntry {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodEntryImpl &&
@@ -166,12 +174,14 @@ class _$MoodEntryImpl extends _MoodEntry {
             (identical(other.remarks, remarks) || other.remarks == remarks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, createdAt, moodName, remarks);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodEntry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoodEntryImplCopyWith<_$MoodEntryImpl> get copyWith =>
@@ -204,8 +214,11 @@ abstract class _MoodEntry extends MoodEntry {
   String get moodName;
   @override
   String get remarks;
+
+  /// Create a copy of MoodEntry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoodEntryImplCopyWith<_$MoodEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

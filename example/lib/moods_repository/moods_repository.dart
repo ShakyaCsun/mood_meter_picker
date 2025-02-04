@@ -1,6 +1,7 @@
 import 'dart:convert' show json;
 import 'dart:developer' as developer;
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_picker_example/moods_repository/models/models.dart';
 import 'package:mood_picker_example/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -10,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 part 'moods_repository.g.dart';
 
 @riverpod
-MoodsRepository moodsRepository(MoodsRepositoryRef ref) {
+MoodsRepository moodsRepository(Ref ref) {
   final preferences = ref.watch(sharedPreferencesProvider);
   return MoodsRepository(
     moodsApi: LocalStorageMoodsApi(preferences: preferences),
@@ -90,7 +91,7 @@ class LocalStorageMoodsApi extends MoodsApi {
             )
             .toList();
         _moodsStreamController.add(moodEntries);
-      } catch (e, st) {
+      } on Exception catch (e, st) {
         developer.log(
           'LocalStorageMoodsApi _init failed',
           error: e,

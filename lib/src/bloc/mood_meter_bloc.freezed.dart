@@ -12,13 +12,15 @@ part of 'mood_meter_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MoodMeterState {
   MoodQuadrant get selectedMoodQuadrant => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MoodMeterStateCopyWith<MoodMeterState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$MoodMeterStateCopyWithImpl<$Res, $Val extends MoodMeterState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +80,8 @@ class __$$MoodMeterInitialStateImplCopyWithImpl<$Res>
       $Res Function(_$MoodMeterInitialStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,7 +118,7 @@ class _$MoodMeterInitialStateImpl implements MoodMeterInitialState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodMeterInitialStateImpl &&
@@ -126,7 +132,9 @@ class _$MoodMeterInitialStateImpl implements MoodMeterInitialState {
   int get hashCode =>
       Object.hash(runtimeType, selectedMoodQuadrant, initialMoodPiece);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoodMeterInitialStateImplCopyWith<_$MoodMeterInitialStateImpl>
@@ -142,8 +150,11 @@ abstract class MoodMeterInitialState implements MoodMeterState {
   @override
   MoodQuadrant get selectedMoodQuadrant;
   MoodPiece? get initialMoodPiece;
+
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoodMeterInitialStateImplCopyWith<_$MoodMeterInitialStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -169,6 +180,8 @@ class __$$MoodMeterCompleteStateImplCopyWithImpl<$Res>
       $Res Function(_$MoodMeterCompleteStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,7 +218,7 @@ class _$MoodMeterCompleteStateImpl implements MoodMeterCompleteState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodMeterCompleteStateImpl &&
@@ -219,7 +232,9 @@ class _$MoodMeterCompleteStateImpl implements MoodMeterCompleteState {
   int get hashCode =>
       Object.hash(runtimeType, selectedMoodPiece, selectedMoodQuadrant);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoodMeterCompleteStateImplCopyWith<_$MoodMeterCompleteStateImpl>
@@ -236,8 +251,11 @@ abstract class MoodMeterCompleteState implements MoodMeterState {
   MoodPiece get selectedMoodPiece;
   @override
   MoodQuadrant get selectedMoodQuadrant;
+
+  /// Create a copy of MoodMeterState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoodMeterCompleteStateImplCopyWith<_$MoodMeterCompleteStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

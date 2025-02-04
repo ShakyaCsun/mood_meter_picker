@@ -6,7 +6,7 @@ part of 'mood_entries.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$moodEntriesHash() => r'0d4e9dbe672e2a3dfe9973fe3bc05857e00f8a9c';
+String _$moodEntriesHash() => r'208326fac88337c2ac1198d34dad56200c07c4c1';
 
 /// See also [moodEntries].
 @ProviderFor(moodEntries)
@@ -19,6 +19,8 @@ final moodEntriesProvider = AutoDisposeStreamProvider<List<MoodEntry>>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef MoodEntriesRef = AutoDisposeStreamProviderRef<List<MoodEntry>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, inference_failure_on_uninitialized_variable, inference_failure_on_function_return_type, inference_failure_on_untyped_parameter
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
