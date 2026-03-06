@@ -9,7 +9,7 @@ part 'mood_entry.g.dart';
 ///
 /// {@endtemplate}
 @freezed
-class MoodEntry with _$MoodEntry {
+abstract class MoodEntry with _$MoodEntry {
   const MoodEntry._();
 
   const factory MoodEntry._new({

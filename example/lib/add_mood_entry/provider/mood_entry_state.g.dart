@@ -6,52 +6,150 @@ part of 'mood_entry_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$moodQuadrantHash() => r'568f6f99e5909493abb7faa786e9581a947594e8';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [moodQuadrant].
-@ProviderFor(moodQuadrant)
-final moodQuadrantProvider = AutoDisposeProvider<MoodQuadrant>.internal(
-  moodQuadrant,
-  name: r'moodQuadrantProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$moodQuadrantHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+@ProviderFor(SelectedMoodPiece)
+final selectedMoodPieceProvider = SelectedMoodPieceProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef MoodQuadrantRef = AutoDisposeProviderRef<MoodQuadrant>;
+final class SelectedMoodPieceProvider
+    extends $NotifierProvider<SelectedMoodPiece, MoodPiece?> {
+  SelectedMoodPieceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'selectedMoodPieceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$selectedMoodPieceHash();
+
+  @$internal
+  @override
+  SelectedMoodPiece create() => SelectedMoodPiece();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(MoodPiece? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<MoodPiece?>(value),
+    );
+  }
+}
+
 String _$selectedMoodPieceHash() => r'1d15e6cddb67e85755aa5c52ee0dd81f744c1866';
 
-/// See also [SelectedMoodPiece].
-@ProviderFor(SelectedMoodPiece)
-final selectedMoodPieceProvider =
-    AutoDisposeNotifierProvider<SelectedMoodPiece, MoodPiece?>.internal(
-  SelectedMoodPiece.new,
-  name: r'selectedMoodPieceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$selectedMoodPieceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+abstract class _$SelectedMoodPiece extends $Notifier<MoodPiece?> {
+  MoodPiece? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<MoodPiece?, MoodPiece?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<MoodPiece?, MoodPiece?>,
+              MoodPiece?,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
 
-typedef _$SelectedMoodPiece = AutoDisposeNotifier<MoodPiece?>;
+@ProviderFor(moodQuadrant)
+final moodQuadrantProvider = MoodQuadrantProvider._();
+
+final class MoodQuadrantProvider
+    extends $FunctionalProvider<MoodQuadrant, MoodQuadrant, MoodQuadrant>
+    with $Provider<MoodQuadrant> {
+  MoodQuadrantProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'moodQuadrantProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$moodQuadrantHash();
+
+  @$internal
+  @override
+  $ProviderElement<MoodQuadrant> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  MoodQuadrant create(Ref ref) {
+    return moodQuadrant(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(MoodQuadrant value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<MoodQuadrant>(value),
+    );
+  }
+}
+
+String _$moodQuadrantHash() => r'568f6f99e5909493abb7faa786e9581a947594e8';
+
+@ProviderFor(NewMoodEntry)
+final newMoodEntryProvider = NewMoodEntryProvider._();
+
+final class NewMoodEntryProvider
+    extends $NotifierProvider<NewMoodEntry, MoodEntryState> {
+  NewMoodEntryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'newMoodEntryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$newMoodEntryHash();
+
+  @$internal
+  @override
+  NewMoodEntry create() => NewMoodEntry();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(MoodEntryState value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<MoodEntryState>(value),
+    );
+  }
+}
+
 String _$newMoodEntryHash() => r'c415c7cd195355e99b4a4f6d91972075d691f54c';
 
-/// See also [NewMoodEntry].
-@ProviderFor(NewMoodEntry)
-final newMoodEntryProvider =
-    AutoDisposeNotifierProvider<NewMoodEntry, MoodEntryState>.internal(
-  NewMoodEntry.new,
-  name: r'newMoodEntryProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$newMoodEntryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$NewMoodEntry = AutoDisposeNotifier<MoodEntryState>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$NewMoodEntry extends $Notifier<MoodEntryState> {
+  MoodEntryState build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<MoodEntryState, MoodEntryState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<MoodEntryState, MoodEntryState>,
+              MoodEntryState,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

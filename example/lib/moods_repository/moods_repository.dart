@@ -1,7 +1,6 @@
 import 'dart:convert' show json;
 import 'dart:developer' as developer;
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_picker_example/moods_repository/models/models.dart';
 import 'package:mood_picker_example/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -40,8 +39,9 @@ class LocalStorageMoodsApi extends MoodsApi {
 
   final SharedPreferences _plugin;
 
-  final _moodsStreamController =
-      BehaviorSubject<List<MoodEntry>>.seeded(const []);
+  final _moodsStreamController = BehaviorSubject<List<MoodEntry>>.seeded(
+    const [],
+  );
 
   static const _moodEntriesCollectionKey = '__moodEntries_collection_key__';
 
@@ -81,15 +81,16 @@ class LocalStorageMoodsApi extends MoodsApi {
     final moodsJson = _getValue(_moodEntriesCollectionKey);
     if (moodsJson != null) {
       try {
-        final moodEntries = List<dynamic>.from(
-          json.decode(moodsJson) as List,
-        )
-            .map(
-              (moodJson) => MoodEntry.fromJson(
-                moodJson as Map<String, dynamic>,
-              ),
-            )
-            .toList();
+        final moodEntries =
+            List<dynamic>.from(
+                  json.decode(moodsJson) as List,
+                )
+                .map(
+                  (moodJson) => MoodEntry.fromJson(
+                    moodJson as Map<String, dynamic>,
+                  ),
+                )
+                .toList();
         _moodsStreamController.add(moodEntries);
       } on Exception catch (e, st) {
         developer.log(

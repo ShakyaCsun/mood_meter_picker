@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,275 +9,229 @@ part of 'mood_entry_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
-mixin _$MoodEntryState {}
+mixin _$MoodEntryState implements DiagnosticableTreeMixin {
 
-/// @nodoc
-abstract class $MoodEntryStateCopyWith<$Res> {
-  factory $MoodEntryStateCopyWith(
-          MoodEntryState value, $Res Function(MoodEntryState) then) =
-      _$MoodEntryStateCopyWithImpl<$Res, MoodEntryState>;
+
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'MoodEntryState'))
+    ;
 }
 
-/// @nodoc
-class _$MoodEntryStateCopyWithImpl<$Res, $Val extends MoodEntryState>
-    implements $MoodEntryStateCopyWith<$Res> {
-  _$MoodEntryStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoodEntryState);
 }
 
-/// @nodoc
-abstract class _$$MoodEntryInitialImplCopyWith<$Res> {
-  factory _$$MoodEntryInitialImplCopyWith(_$MoodEntryInitialImpl value,
-          $Res Function(_$MoodEntryInitialImpl) then) =
-      __$$MoodEntryInitialImplCopyWithImpl<$Res>;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'MoodEntryState()';
+}
+
+
 }
 
 /// @nodoc
-class __$$MoodEntryInitialImplCopyWithImpl<$Res>
-    extends _$MoodEntryStateCopyWithImpl<$Res, _$MoodEntryInitialImpl>
-    implements _$$MoodEntryInitialImplCopyWith<$Res> {
-  __$$MoodEntryInitialImplCopyWithImpl(_$MoodEntryInitialImpl _value,
-      $Res Function(_$MoodEntryInitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
+class $MoodEntryStateCopyWith<$Res>  {
+$MoodEntryStateCopyWith(MoodEntryState _, $Res Function(MoodEntryState) __);
 }
+
+
 
 /// @nodoc
 
-class _$MoodEntryInitialImpl
-    with DiagnosticableTreeMixin
-    implements MoodEntryInitial {
-  const _$MoodEntryInitialImpl();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MoodEntryState.initial()';
-  }
+class MoodEntryInitial with DiagnosticableTreeMixin implements MoodEntryState {
+  const MoodEntryInitial();
+  
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'MoodEntryState.initial'));
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MoodEntryInitialImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'MoodEntryState.initial'))
+    ;
 }
 
-abstract class MoodEntryInitial implements MoodEntryState {
-  const factory MoodEntryInitial() = _$MoodEntryInitialImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoodEntryInitial);
 }
 
-/// @nodoc
-abstract class _$$MoodEntryInProgressImplCopyWith<$Res> {
-  factory _$$MoodEntryInProgressImplCopyWith(_$MoodEntryInProgressImpl value,
-          $Res Function(_$MoodEntryInProgressImpl) then) =
-      __$$MoodEntryInProgressImplCopyWithImpl<$Res>;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'MoodEntryState.initial()';
 }
 
-/// @nodoc
-class __$$MoodEntryInProgressImplCopyWithImpl<$Res>
-    extends _$MoodEntryStateCopyWithImpl<$Res, _$MoodEntryInProgressImpl>
-    implements _$$MoodEntryInProgressImplCopyWith<$Res> {
-  __$$MoodEntryInProgressImplCopyWithImpl(_$MoodEntryInProgressImpl _value,
-      $Res Function(_$MoodEntryInProgressImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
 }
+
+
+
 
 /// @nodoc
 
-class _$MoodEntryInProgressImpl
-    with DiagnosticableTreeMixin
-    implements MoodEntryInProgress {
-  const _$MoodEntryInProgressImpl();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MoodEntryState.inProgress()';
-  }
+class MoodEntryInProgress with DiagnosticableTreeMixin implements MoodEntryState {
+  const MoodEntryInProgress();
+  
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'MoodEntryState.inProgress'));
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MoodEntryInProgressImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'MoodEntryState.inProgress'))
+    ;
 }
 
-abstract class MoodEntryInProgress implements MoodEntryState {
-  const factory MoodEntryInProgress() = _$MoodEntryInProgressImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoodEntryInProgress);
 }
 
-/// @nodoc
-abstract class _$$MoodEntrySuccessImplCopyWith<$Res> {
-  factory _$$MoodEntrySuccessImplCopyWith(_$MoodEntrySuccessImpl value,
-          $Res Function(_$MoodEntrySuccessImpl) then) =
-      __$$MoodEntrySuccessImplCopyWithImpl<$Res>;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'MoodEntryState.inProgress()';
 }
 
-/// @nodoc
-class __$$MoodEntrySuccessImplCopyWithImpl<$Res>
-    extends _$MoodEntryStateCopyWithImpl<$Res, _$MoodEntrySuccessImpl>
-    implements _$$MoodEntrySuccessImplCopyWith<$Res> {
-  __$$MoodEntrySuccessImplCopyWithImpl(_$MoodEntrySuccessImpl _value,
-      $Res Function(_$MoodEntrySuccessImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
 }
+
+
+
 
 /// @nodoc
 
-class _$MoodEntrySuccessImpl
-    with DiagnosticableTreeMixin
-    implements MoodEntrySuccess {
-  const _$MoodEntrySuccessImpl();
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MoodEntryState.success()';
-  }
+class MoodEntrySuccess with DiagnosticableTreeMixin implements MoodEntryState {
+  const MoodEntrySuccess();
+  
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'MoodEntryState.success'));
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MoodEntrySuccessImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'MoodEntryState.success'))
+    ;
 }
 
-abstract class MoodEntrySuccess implements MoodEntryState {
-  const factory MoodEntrySuccess() = _$MoodEntrySuccessImpl;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoodEntrySuccess);
 }
 
-/// @nodoc
-abstract class _$$MoodEntryFailureImplCopyWith<$Res> {
-  factory _$$MoodEntryFailureImplCopyWith(_$MoodEntryFailureImpl value,
-          $Res Function(_$MoodEntryFailureImpl) then) =
-      __$$MoodEntryFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'MoodEntryState.success()';
 }
 
-/// @nodoc
-class __$$MoodEntryFailureImplCopyWithImpl<$Res>
-    extends _$MoodEntryStateCopyWithImpl<$Res, _$MoodEntryFailureImpl>
-    implements _$$MoodEntryFailureImplCopyWith<$Res> {
-  __$$MoodEntryFailureImplCopyWithImpl(_$MoodEntryFailureImpl _value,
-      $Res Function(_$MoodEntryFailureImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$MoodEntryFailureImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
+
+
+
 
 /// @nodoc
 
-class _$MoodEntryFailureImpl
-    with DiagnosticableTreeMixin
-    implements MoodEntryFailure {
-  const _$MoodEntryFailureImpl({required this.message});
 
-  @override
-  final String message;
+class MoodEntryFailure with DiagnosticableTreeMixin implements MoodEntryState {
+  const MoodEntryFailure({required this.message});
+  
 
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MoodEntryState.failure(message: $message)';
-  }
+ final  String message;
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'MoodEntryState.failure'))
-      ..add(DiagnosticsProperty('message', message));
-  }
+/// Create a copy of MoodEntryState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MoodEntryFailureCopyWith<MoodEntryFailure> get copyWith => _$MoodEntryFailureCopyWithImpl<MoodEntryFailure>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MoodEntryFailureImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MoodEntryFailureImplCopyWith<_$MoodEntryFailureImpl> get copyWith =>
-      __$$MoodEntryFailureImplCopyWithImpl<_$MoodEntryFailureImpl>(
-          this, _$identity);
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'MoodEntryState.failure'))
+    ..add(DiagnosticsProperty('message', message));
 }
 
-abstract class MoodEntryFailure implements MoodEntryState {
-  const factory MoodEntryFailure({required final String message}) =
-      _$MoodEntryFailureImpl;
-
-  String get message;
-
-  /// Create a copy of MoodEntryState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MoodEntryFailureImplCopyWith<_$MoodEntryFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MoodEntryFailure&&(identical(other.message, message) || other.message == message));
 }
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'MoodEntryState.failure(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MoodEntryFailureCopyWith<$Res> implements $MoodEntryStateCopyWith<$Res> {
+  factory $MoodEntryFailureCopyWith(MoodEntryFailure value, $Res Function(MoodEntryFailure) _then) = _$MoodEntryFailureCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class _$MoodEntryFailureCopyWithImpl<$Res>
+    implements $MoodEntryFailureCopyWith<$Res> {
+  _$MoodEntryFailureCopyWithImpl(this._self, this._then);
+
+  final MoodEntryFailure _self;
+  final $Res Function(MoodEntryFailure) _then;
+
+/// Create a copy of MoodEntryState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(MoodEntryFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

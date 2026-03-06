@@ -6,15 +6,14 @@ part of 'mood_entry.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MoodEntryImpl _$$MoodEntryImplFromJson(Map<String, dynamic> json) =>
-    _$MoodEntryImpl(
-      id: json['id'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      moodName: json['moodName'] as String,
-      remarks: json['remarks'] as String,
-    );
+_MoodEntry _$MoodEntryFromJson(Map<String, dynamic> json) => _MoodEntry(
+  id: json['id'] as String,
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  moodName: json['moodName'] as String,
+  remarks: json['remarks'] as String,
+);
 
-Map<String, dynamic> _$$MoodEntryImplToJson(_$MoodEntryImpl instance) =>
+Map<String, dynamic> _$MoodEntryToJson(_MoodEntry instance) =>
     <String, dynamic>{
       'id': instance.id,
       'createdAt': instance.createdAt.toIso8601String(),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_meter_picker/mood_meter_picker.dart';
@@ -63,16 +65,21 @@ class _RemarksPageState extends State<RemarksPage> {
                 const SizedBox(height: 16),
                 Consumer(
                   builder: (context, ref, child) {
-                    final isSavingEntry =
-                        ref.watch(newMoodEntryProvider).isSaving;
+                    final isSavingEntry = ref
+                        .watch(newMoodEntryProvider)
+                        .isSaving;
                     return FilledButton(
                       onPressed: isSavingEntry
                           ? null
                           : () {
-                              ref.read(newMoodEntryProvider.notifier).save(
-                                    widget.moodPiece,
-                                    _controller.text,
-                                  );
+                              unawaited(
+                                ref
+                                    .read(newMoodEntryProvider.notifier)
+                                    .save(
+                                      widget.moodPiece,
+                                      _controller.text,
+                                    ),
+                              );
                             },
                       child: isSavingEntry
                           ? const Center(

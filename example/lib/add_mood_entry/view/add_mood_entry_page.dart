@@ -58,7 +58,9 @@ class AddMoodEntryPage extends ConsumerWidget {
                 fontWeight: FontWeight.w500,
               ),
               onMoodSelectionChanged: (moodPiece) {
-                ref.read(selectedMoodPieceProvider.notifier).moodPieceChanged(
+                ref
+                    .read(selectedMoodPieceProvider.notifier)
+                    .moodPieceChanged(
                       moodPiece,
                     );
               },

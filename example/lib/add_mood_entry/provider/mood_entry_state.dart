@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mood_meter_picker/mood_meter_picker.dart';
 import 'package:mood_picker_example/moods_repository/models/models.dart';

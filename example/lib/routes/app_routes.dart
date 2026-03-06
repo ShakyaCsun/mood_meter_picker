@@ -46,7 +46,7 @@ class HomeShellRouteData extends ShellRouteData {
   }
 }
 
-class WelcomeRoute extends GoRouteData {
+class WelcomeRoute extends GoRouteData with $WelcomeRoute {
   const WelcomeRoute();
 
   @override
@@ -55,7 +55,7 @@ class WelcomeRoute extends GoRouteData {
   }
 }
 
-class StatsRoute extends GoRouteData {
+class StatsRoute extends GoRouteData with $StatsRoute {
   const StatsRoute();
 
   @override
@@ -64,7 +64,7 @@ class StatsRoute extends GoRouteData {
   }
 }
 
-class AddMoodEntryRoute extends GoRouteData {
+class AddMoodEntryRoute extends GoRouteData with $AddMoodEntryRoute {
   const AddMoodEntryRoute();
 
   static final GlobalKey<NavigatorState> $parentNavigatorKey =
@@ -76,7 +76,7 @@ class AddMoodEntryRoute extends GoRouteData {
   }
 }
 
-class RemarksRoute extends GoRouteData {
+class RemarksRoute extends GoRouteData with $RemarksRoute {
   const RemarksRoute({
     required this.moodName,
   });

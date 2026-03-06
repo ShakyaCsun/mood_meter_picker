@@ -6,111 +6,121 @@ part of 'app_routes.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [
-      $homeShellRouteData,
-    ];
+List<RouteBase> get $appRoutes => [$homeShellRouteData];
 
 RouteBase get $homeShellRouteData => ShellRouteData.$route(
-      navigatorKey: HomeShellRouteData.$navigatorKey,
-      factory: $HomeShellRouteDataExtension._fromState,
+  navigatorKey: HomeShellRouteData.$navigatorKey,
+  factory: $HomeShellRouteDataExtension._fromState,
+  routes: [
+    GoRouteData.$route(
+      path: '/',
+      factory: $WelcomeRoute._fromState,
       routes: [
+        GoRouteData.$route(path: 'stats', factory: $StatsRoute._fromState),
         GoRouteData.$route(
-          path: '/',
-          factory: $WelcomeRouteExtension._fromState,
+          path: 'add',
+          parentNavigatorKey: AddMoodEntryRoute.$parentNavigatorKey,
+          factory: $AddMoodEntryRoute._fromState,
           routes: [
             GoRouteData.$route(
-              path: 'stats',
-              factory: $StatsRouteExtension._fromState,
-            ),
-            GoRouteData.$route(
-              path: 'add',
-              parentNavigatorKey: AddMoodEntryRoute.$parentNavigatorKey,
-              factory: $AddMoodEntryRouteExtension._fromState,
-              routes: [
-                GoRouteData.$route(
-                  path: ':moodName/remarks',
-                  parentNavigatorKey: RemarksRoute.$parentNavigatorKey,
-                  factory: $RemarksRouteExtension._fromState,
-                ),
-              ],
+              path: ':moodName/remarks',
+              parentNavigatorKey: RemarksRoute.$parentNavigatorKey,
+              factory: $RemarksRoute._fromState,
             ),
           ],
         ),
       ],
-    );
+    ),
+  ],
+);
 
 extension $HomeShellRouteDataExtension on HomeShellRouteData {
   static HomeShellRouteData _fromState(GoRouterState state) =>
       const HomeShellRouteData();
 }
 
-extension $WelcomeRouteExtension on WelcomeRoute {
+mixin $WelcomeRoute on GoRouteData {
   static WelcomeRoute _fromState(GoRouterState state) => const WelcomeRoute();
 
-  String get location => GoRouteData.$location(
-        '/',
-      );
+  @override
+  String get location => GoRouteData.$location('/');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $StatsRouteExtension on StatsRoute {
+mixin $StatsRoute on GoRouteData {
   static StatsRoute _fromState(GoRouterState state) => const StatsRoute();
 
-  String get location => GoRouteData.$location(
-        '/stats',
-      );
+  @override
+  String get location => GoRouteData.$location('/stats');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $AddMoodEntryRouteExtension on AddMoodEntryRoute {
+mixin $AddMoodEntryRoute on GoRouteData {
   static AddMoodEntryRoute _fromState(GoRouterState state) =>
       const AddMoodEntryRoute();
 
-  String get location => GoRouteData.$location(
-        '/add',
-      );
+  @override
+  String get location => GoRouteData.$location('/add');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $RemarksRouteExtension on RemarksRoute {
-  static RemarksRoute _fromState(GoRouterState state) => RemarksRoute(
-        moodName: state.pathParameters['moodName']!,
-      );
+mixin $RemarksRoute on GoRouteData {
+  static RemarksRoute _fromState(GoRouterState state) =>
+      RemarksRoute(moodName: state.pathParameters['moodName']!);
 
+  RemarksRoute get _self => this as RemarksRoute;
+
+  @override
   String get location => GoRouteData.$location(
-        '/add/${Uri.encodeComponent(moodName)}/remarks',
-      );
+    '/add/${Uri.encodeComponent(_self.moodName)}/remarks',
+  );
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }

@@ -53,9 +53,9 @@ class StatsPage extends StatelessWidget {
                   }
                   var hideDate = false;
                   if (index > 0 &&
-                      data[index]
-                          .createdAt
-                          .isSameDateAs(data[index - 1].createdAt)) {
+                      data[index].createdAt.isSameDateAs(
+                        data[index - 1].createdAt,
+                      )) {
                     hideDate = true;
                   }
                   return MoodTile(
