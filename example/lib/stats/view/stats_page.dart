@@ -58,10 +58,7 @@ class StatsPage extends StatelessWidget {
                       )) {
                     hideDate = true;
                   }
-                  return MoodTile(
-                    moodEntry: data[index],
-                    hideDate: hideDate,
-                  );
+                  return MoodTile(moodEntry: data[index], hideDate: hideDate);
                 },
               );
             },
@@ -69,9 +66,7 @@ class StatsPage extends StatelessWidget {
               return Text('Error $error');
             },
             loading: () {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const Center(child: CircularProgressIndicator());
             },
           );
         },
@@ -102,10 +97,7 @@ class MoodTile extends StatelessWidget {
         children: [
           if (!hideDate) ...[
             const SizedBox(height: 8),
-            Text(
-              createdDate,
-              style: textTheme.titleMedium,
-            ),
+            Text(createdDate, style: textTheme.titleMedium),
           ],
           const SizedBox(height: 4),
           Row(
@@ -120,18 +112,12 @@ class MoodTile extends StatelessWidget {
                 child: const SizedBox.square(dimension: 10),
               ),
               const SizedBox(width: 8),
-              Text(
-                moodEntry.moodName,
-                style: textTheme.bodyLarge,
-              ),
+              Text(moodEntry.moodName, style: textTheme.bodyLarge),
               const Spacer(),
               Text(createdTime),
             ],
           ),
-          if (remarks.isNotEmpty)
-            Text(
-              remarks,
-            ),
+          if (remarks.isNotEmpty) Text(remarks),
         ],
       ),
     );

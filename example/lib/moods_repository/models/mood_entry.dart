@@ -8,7 +8,7 @@ part 'mood_entry.g.dart';
 /// {@template mood_entry}
 ///
 /// {@endtemplate}
-@freezed
+@Freezed(copyWith: false)
 abstract class MoodEntry with _$MoodEntry {
   const MoodEntry._();
 

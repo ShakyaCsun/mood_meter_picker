@@ -6,10 +6,7 @@ import 'package:mood_meter_picker/mood_meter_picker.dart';
 import 'package:mood_picker_example/add_mood_entry/add_mood_entry.dart';
 
 class RemarksPage extends StatefulWidget {
-  const RemarksPage({
-    required this.moodPiece,
-    super.key,
-  });
+  const RemarksPage({required this.moodPiece, super.key});
 
   final MoodPiece moodPiece;
 
@@ -35,9 +32,7 @@ class _RemarksPageState extends State<RemarksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Feeling ${widget.moodPiece.moodName}'),
-      ),
+      appBar: AppBar(title: Text('Feeling ${widget.moodPiece.moodName}')),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 600),
@@ -75,16 +70,11 @@ class _RemarksPageState extends State<RemarksPage> {
                               unawaited(
                                 ref
                                     .read(newMoodEntryProvider.notifier)
-                                    .save(
-                                      widget.moodPiece,
-                                      _controller.text,
-                                    ),
+                                    .save(widget.moodPiece, _controller.text),
                               );
                             },
                       child: isSavingEntry
-                          ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
+                          ? const Center(child: CircularProgressIndicator())
                           : const Text('Save'),
                     );
                   },

@@ -17,16 +17,10 @@ part 'app_routes.g.dart';
     TypedGoRoute<WelcomeRoute>(
       path: '/',
       routes: [
-        TypedGoRoute<StatsRoute>(
-          path: 'stats',
-        ),
+        TypedGoRoute<StatsRoute>(path: 'stats'),
         TypedGoRoute<AddMoodEntryRoute>(
           path: 'add',
-          routes: [
-            TypedGoRoute<RemarksRoute>(
-              path: ':moodName/remarks',
-            ),
-          ],
+          routes: [TypedGoRoute<RemarksRoute>(path: ':moodName/remarks')],
         ),
       ],
     ),
@@ -40,9 +34,7 @@ class HomeShellRouteData extends ShellRouteData {
 
   @override
   Widget builder(BuildContext context, GoRouterState state, Widget navigator) {
-    return BottomNavScaffold(
-      child: navigator,
-    );
+    return BottomNavScaffold(child: navigator);
   }
 }
 
@@ -77,9 +69,7 @@ class AddMoodEntryRoute extends GoRouteData with $AddMoodEntryRoute {
 }
 
 class RemarksRoute extends GoRouteData with $RemarksRoute {
-  const RemarksRoute({
-    required this.moodName,
-  });
+  const RemarksRoute({required this.moodName});
 
   final String moodName;
 
@@ -88,9 +78,7 @@ class RemarksRoute extends GoRouteData with $RemarksRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return RemarksPage(
-      moodPiece: MoodPiece.fromName(moodName)!,
-    );
+    return RemarksPage(moodPiece: MoodPiece.fromName(moodName)!);
   }
 
   @override

@@ -3,10 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mood_picker_example/routes/routes.dart';
 
 class BottomNavScaffold extends StatelessWidget {
-  const BottomNavScaffold({
-    required this.child,
-    super.key,
-  });
+  const BottomNavScaffold({required this.child, super.key});
 
   final Widget child;
 
@@ -16,15 +13,10 @@ class BottomNavScaffold extends StatelessWidget {
       body: child,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _getSelectedIndex(context),
-        onDestinationSelected: (value) => _onDestinationSelected(
-          value,
-          context,
-        ),
+        onDestinationSelected: (value) =>
+            _onDestinationSelected(value, context),
         destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_sharp),
-            label: 'Home',
-          ),
+          NavigationDestination(icon: Icon(Icons.home_sharp), label: 'Home'),
           NavigationDestination(
             icon: Icon(Icons.bar_chart_sharp),
             label: 'Stats',

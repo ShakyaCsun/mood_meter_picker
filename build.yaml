@@ -3,5 +3,6 @@ targets:
     builders:
       freezed:
         options:
+          format: true
           map: false
           when: false

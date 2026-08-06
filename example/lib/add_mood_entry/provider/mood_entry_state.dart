@@ -33,9 +33,8 @@ sealed class MoodEntryState with _$MoodEntryState {
   const factory MoodEntryState.initial() = MoodEntryInitial;
   const factory MoodEntryState.inProgress() = MoodEntryInProgress;
   const factory MoodEntryState.success() = MoodEntrySuccess;
-  const factory MoodEntryState.failure({
-    required String message,
-  }) = MoodEntryFailure;
+  const factory MoodEntryState.failure({required String message}) =
+      MoodEntryFailure;
 }
 
 extension MoodEntryStateExtension on MoodEntryState {

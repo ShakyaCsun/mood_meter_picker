@@ -47,7 +47,7 @@ abstract class _$SelectedMoodPiece extends $Notifier<MoodPiece?> {
   MoodPiece? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<MoodPiece?, MoodPiece?>;
     final element =
         ref.element
@@ -57,7 +57,7 @@ abstract class _$SelectedMoodPiece extends $Notifier<MoodPiece?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -140,7 +140,7 @@ abstract class _$NewMoodEntry extends $Notifier<MoodEntryState> {
   MoodEntryState build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<MoodEntryState, MoodEntryState>;
     final element =
         ref.element
@@ -150,6 +150,6 @@ abstract class _$NewMoodEntry extends $Notifier<MoodEntryState> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

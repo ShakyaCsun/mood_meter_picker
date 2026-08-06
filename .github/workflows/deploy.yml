@@ -1,0 +1,47 @@
+name: 🌎 Deploy to GitHub Pages
+
+on:
+  # Trigger the workflow every time you push to the `main` branch
+  push:
+    branches: [main]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# Allow this job to clone the repo
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Build job
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Build Flutter app
+        uses: subosito/flutter-action@v2
+        with:
+          cache: true
+      - run: cd example
+      - run: flutter pub get
+      - run: flutter build web
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./build/web
+
+  # Deployment job
+  deploy:
+    name: Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

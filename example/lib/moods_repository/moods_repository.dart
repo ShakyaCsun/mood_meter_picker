@@ -31,9 +31,8 @@ abstract class MoodsApi {
 class MoodEntryNotFoundException implements Exception {}
 
 class LocalStorageMoodsApi extends MoodsApi {
-  LocalStorageMoodsApi({
-    required SharedPreferences preferences,
-  }) : _plugin = preferences {
+  LocalStorageMoodsApi({required SharedPreferences preferences})
+    : _plugin = preferences {
     _init();
   }
 
@@ -81,16 +80,12 @@ class LocalStorageMoodsApi extends MoodsApi {
     final moodsJson = _getValue(_moodEntriesCollectionKey);
     if (moodsJson != null) {
       try {
-        final moodEntries =
-            List<dynamic>.from(
-                  json.decode(moodsJson) as List,
-                )
-                .map(
-                  (moodJson) => MoodEntry.fromJson(
-                    moodJson as Map<String, dynamic>,
-                  ),
-                )
-                .toList();
+        final moodEntries = List<dynamic>.from(json.decode(moodsJson) as List)
+            .map(
+              (moodJson) =>
+                  MoodEntry.fromJson(moodJson as Map<String, dynamic>),
+            )
+            .toList();
         _moodsStreamController.add(moodEntries);
       } on Exception catch (e, st) {
         developer.log(
@@ -104,9 +99,7 @@ class LocalStorageMoodsApi extends MoodsApi {
 }
 
 class MoodsRepository {
-  const MoodsRepository({
-    required MoodsApi moodsApi,
-  }) : _moodsApi = moodsApi;
+  const MoodsRepository({required this._moodsApi});
 
   final MoodsApi _moodsApi;
 

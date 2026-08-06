@@ -9,20 +9,14 @@ part 'mood_meter_event.dart';
 part 'mood_meter_state.dart';
 
 class MoodMeterBloc extends Bloc<MoodMeterEvent, MoodMeterState> {
-  MoodMeterBloc({
-    MoodQuadrant? moodQuadrant,
-  }) : super(
-          MoodMeterInitialState(
-            selectedMoodQuadrant:
-                moodQuadrant ?? MoodQuadrant.highEnergyPleasant,
-          ),
-        ) {
-    on<MoodPieceSelected>(
-      _onMoodPieceSelected,
-    );
-    on<MoodPieceHovered>(
-      _onMoodPieceHovered,
-    );
+  MoodMeterBloc({MoodQuadrant? moodQuadrant})
+    : super(
+        MoodMeterInitialState(
+          selectedMoodQuadrant: moodQuadrant ?? MoodQuadrant.highEnergyPleasant,
+        ),
+      ) {
+    on<MoodPieceSelected>(_onMoodPieceSelected);
+    on<MoodPieceHovered>(_onMoodPieceHovered);
   }
 
   void _onMoodPieceSelected(

@@ -6,6 +6,7 @@ import 'package:mood_meter_picker/mood_meter_picker.dart';
 import 'package:mood_meter_picker/src/bloc/mood_meter_bloc.dart';
 import 'package:mood_meter_picker/src/data/extensions.dart';
 import 'package:mood_meter_picker/src/data/mood_picker_settings.dart';
+import 'package:mood_meter_picker/src/data/mood_piece.dart';
 import 'package:mood_meter_picker/src/widgets/animated_overflow_box_align.dart';
 import 'package:mood_meter_picker/src/widgets/my_hit_test_target.dart';
 import 'package:mood_meter_picker/src/widgets/selected_mood_tile.dart';
@@ -54,9 +55,8 @@ class MoodMeterPicker extends StatelessWidget {
             create: (context) {
               final moodPiece = initialMoodPiece;
               if (moodPiece != null) {
-                return MoodMeterBloc(
-                  moodQuadrant: moodPiece.moodQuadrant,
-                )..add(MoodPieceSelected(moodPiece: moodPiece));
+                return MoodMeterBloc(moodQuadrant: moodPiece.moodQuadrant)
+                  ..add(MoodPieceSelected(moodPiece: moodPiece));
               }
               return MoodMeterBloc(moodQuadrant: initialMoodQuadrant);
             },
@@ -71,9 +71,7 @@ class MoodMeterPicker extends StatelessWidget {
 }
 
 class _MoodPickerView extends StatelessWidget {
-  const _MoodPickerView({
-    required this.onMoodSelectionChanged,
-  });
+  const _MoodPickerView({required this.onMoodSelectionChanged});
 
   final MoodPieceSelectionCallback onMoodSelectionChanged;
 
@@ -113,8 +111,8 @@ class _MoodPickerBody extends StatelessWidget {
     required this.totalHeight,
     required this.totalWidth,
     required this.alignment,
-  })  : pieceHeight = totalHeight / EnergyLevel.values.length,
-        pieceWidth = totalWidth / PleasantnessLevel.values.length;
+  }) : pieceHeight = totalHeight / EnergyLevel.values.length,
+       pieceWidth = totalWidth / PleasantnessLevel.values.length;
 
   final double totalHeight;
   final double totalWidth;
@@ -127,8 +125,8 @@ class _MoodPickerBody extends StatelessWidget {
     final state = context.read<MoodMeterBloc>().state;
     if (state case MoodMeterCompleteState(:final selectedMoodPiece)) {
       context.read<MoodMeterBloc>().add(
-            MoodPieceSelected(moodPiece: selectedMoodPiece),
-          );
+        MoodPieceSelected(moodPiece: selectedMoodPiece),
+      );
     }
   }
 
@@ -157,8 +155,8 @@ class _MoodPickerBody extends StatelessWidget {
 
                 if (target is MyHitTestTargetObject) {
                   context.read<MoodMeterBloc>().add(
-                        MoodPieceHovered(moodPiece: target.moodPiece),
-                      );
+                    MoodPieceHovered(moodPiece: target.moodPiece),
+                  );
                 }
               }
             }
@@ -228,8 +226,8 @@ class _MoodPieceButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.read<MoodMeterBloc>().add(
-              MoodPieceSelected(moodPiece: moodPiece),
-            );
+          MoodPieceSelected(moodPiece: moodPiece),
+        );
       },
       child: BlocBuilder<MoodMeterBloc, MoodMeterState>(
         buildWhen: (previous, current) {
@@ -241,7 +239,7 @@ class _MoodPieceButton extends StatelessWidget {
           final isCurrentMoodThis = switch (current) {
             MoodMeterInitialState() => false,
             MoodMeterCompleteState(:final selectedMoodPiece) =>
-              selectedMoodPiece == moodPiece
+              selectedMoodPiece == moodPiece,
           };
           return isPreviousMoodThis || isCurrentMoodThis;
         },
@@ -255,13 +253,16 @@ class _MoodPieceButton extends StatelessWidget {
           }
           final userSettings = context.read<MoodPickerSettings>();
           final textTheme = Theme.of(context).textTheme;
-          final selectedTextStyle = userSettings.selectedTextStyle ??
+          final selectedTextStyle =
+              userSettings.selectedTextStyle ??
               (textTheme.bodyLarge ?? const TextStyle()).copyWith(
                 color: Colors.white,
               );
-          final unselectedTextStyle = userSettings.unselectedTextStyle ??
-              (textTheme.labelMedium ?? const TextStyle())
-                  .copyWith(color: Colors.white60);
+          final unselectedTextStyle =
+              userSettings.unselectedTextStyle ??
+              (textTheme.labelMedium ?? const TextStyle()).copyWith(
+                color: Colors.white60,
+              );
 
           final labelOnTop =
               !(moodPiece.isTopMost || moodPiece.energy == EnergyLevel.low1);
@@ -282,9 +283,7 @@ class _MoodPieceButton extends StatelessWidget {
             child: Container(
               height: height,
               width: width,
-              decoration: BoxDecoration(
-                color: moodPiece.color,
-              ),
+              decoration: BoxDecoration(color: moodPiece.color),
             ),
           );
         },

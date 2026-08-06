@@ -72,8 +72,9 @@ class AnimatedOverflowBoxAlign extends ImplicitlyAnimatedWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
+    properties.add(
+      DiagnosticsProperty<AlignmentGeometry>('alignment', alignment),
+    );
   }
 }
 
@@ -83,12 +84,14 @@ class _AnimatedAlignState
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
-    _alignment = visitor(
-      _alignment,
-      widget.alignment,
-      (dynamic value) =>
-          AlignmentGeometryTween(begin: value as AlignmentGeometry),
-    ) as AlignmentGeometryTween?;
+    _alignment =
+        visitor(
+              _alignment,
+              widget.alignment,
+              (dynamic value) =>
+                  AlignmentGeometryTween(begin: value as AlignmentGeometry),
+            )
+            as AlignmentGeometryTween?;
   }
 
   @override

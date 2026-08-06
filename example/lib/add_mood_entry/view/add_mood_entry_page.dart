@@ -5,9 +5,7 @@ import 'package:mood_picker_example/add_mood_entry/add_mood_entry.dart';
 import 'package:mood_picker_example/routes/routes.dart';
 
 class AddMoodEntryPage extends ConsumerWidget {
-  const AddMoodEntryPage({
-    super.key,
-  });
+  const AddMoodEntryPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,19 +15,11 @@ class AddMoodEntryPage extends ConsumerWidget {
           const WelcomeRoute().go(context);
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(
-                content: Text('Mood Data Recorded'),
-              ),
-            );
+            ..showSnackBar(const SnackBar(content: Text('Mood Data Recorded')));
         case MoodEntryFailure(:final message):
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(message),
-              ),
-            );
+            ..showSnackBar(SnackBar(content: Text(message)));
         default:
           break;
       }
@@ -60,9 +50,7 @@ class AddMoodEntryPage extends ConsumerWidget {
               onMoodSelectionChanged: (moodPiece) {
                 ref
                     .read(selectedMoodPieceProvider.notifier)
-                    .moodPieceChanged(
-                      moodPiece,
-                    );
+                    .moodPieceChanged(moodPiece);
               },
             ),
           ),

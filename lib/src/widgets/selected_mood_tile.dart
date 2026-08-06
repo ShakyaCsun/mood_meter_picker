@@ -30,57 +30,40 @@ class SelectedMoodTile extends StatelessWidget {
         fallbackAnchor: leftMood == null
             ? _FallbackAnchor.left
             : rightMood == null
-                ? _FallbackAnchor.right
-                : null,
+            ? _FallbackAnchor.right
+            : null,
       ),
       children: [
         LayoutId(
           id: _Slot.main,
           child: DecoratedBox(
             decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.white60,
-              ),
+              border: Border.all(color: Colors.white60),
               color: moodPiece.color,
             ),
-            child: SizedBox(
-              height: height,
-              width: width,
-            ),
+            child: SizedBox(height: height, width: width),
           ),
         ),
         LayoutId(
           id: labelOnTop ? _Slot.top : _Slot.bottom,
-          child: Text(
-            moodPiece.moodName,
-            style: selectedTextStyle,
-          ),
+          child: Text(moodPiece.moodName, style: selectedTextStyle),
         ),
         if (leftMood != null)
           LayoutId(
             id: _Slot.left,
-            child: Text(
-              leftMood.moodName,
-              style: unselectedTextStyle,
-            ),
+            child: Text(leftMood.moodName, style: unselectedTextStyle),
           ),
         if (rightMood != null)
           LayoutId(
             id: _Slot.right,
-            child: Text(
-              rightMood.moodName,
-              style: unselectedTextStyle,
-            ),
+            child: Text(rightMood.moodName, style: unselectedTextStyle),
           ),
         if (!(moodPiece.energy == EnergyLevel.high1 ||
             moodPiece.energy == EnergyLevel.low1))
           if (upOrDownMood != null)
             LayoutId(
               id: labelOnTop ? _Slot.bottom : _Slot.top,
-              child: Text(
-                upOrDownMood.moodName,
-                style: unselectedTextStyle,
-              ),
+              child: Text(upOrDownMood.moodName, style: unselectedTextStyle),
             ),
       ],
     );
@@ -100,9 +83,7 @@ enum _FallbackAnchor {
 }
 
 class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
-  _MoodTileLayoutDelegate({
-    this.fallbackAnchor,
-  });
+  _MoodTileLayoutDelegate({this.fallbackAnchor});
 
   static const _extraPadding = 4.0;
 
@@ -117,10 +98,7 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
     var mainSize = Size.zero;
     if (hasChild(_Slot.main)) {
       mainSize = layoutChild(_Slot.main, BoxConstraints.loose(size));
-      positionChild(
-        _Slot.main,
-        centerOffset - mainSize.center(Offset.zero),
-      );
+      positionChild(_Slot.main, centerOffset - mainSize.center(Offset.zero));
     }
     final halfMainHeight = mainSize.height / 2;
     final halfMainWidth = mainSize.width / 2;
@@ -134,23 +112,14 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
         switch (fallbackAnchor) {
           case _FallbackAnchor.left:
             offset -= topSize.bottomLeft(Offset.zero);
-            offset -= Offset(
-              0.8 * halfMainWidth,
-              halfMainHeight,
-            );
+            offset -= Offset(0.8 * halfMainWidth, halfMainHeight);
             offset += const Offset(_extraPadding, -_extraPadding);
           case _FallbackAnchor.right:
             offset -= topSize.bottomRight(Offset.zero);
-            offset += Offset(
-              0.8 * halfMainWidth,
-              -halfMainHeight,
-            );
+            offset += Offset(0.8 * halfMainWidth, -halfMainHeight);
             offset -= const Offset(_extraPadding, _extraPadding);
         }
-        positionChild(
-          _Slot.top,
-          offset,
-        );
+        positionChild(_Slot.top, offset);
       } else {
         positionChild(
           _Slot.top,
@@ -169,23 +138,14 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
         var offset = size.center(Offset.zero);
         switch (fallbackAnchor) {
           case _FallbackAnchor.left:
-            offset += Offset(
-              -(0.8 * halfMainWidth),
-              halfMainHeight,
-            );
+            offset += Offset(-(0.8 * halfMainWidth), halfMainHeight);
             offset += const Offset(_extraPadding, _extraPadding);
           case _FallbackAnchor.right:
             offset -= bottomSize.topRight(Offset.zero);
-            offset += Offset(
-              0.8 * halfMainWidth,
-              halfMainHeight,
-            );
+            offset += Offset(0.8 * halfMainWidth, halfMainHeight);
             offset += const Offset(-_extraPadding, _extraPadding);
         }
-        positionChild(
-          _Slot.bottom,
-          offset,
-        );
+        positionChild(_Slot.bottom, offset);
       } else {
         positionChild(
           _Slot.bottom,
@@ -230,10 +190,4 @@ class _MoodTileLayoutDelegate extends MultiChildLayoutDelegate {
   }
 }
 
-enum _Slot {
-  main,
-  top,
-  right,
-  left,
-  bottom,
-}
+enum _Slot { main, top, right, left, bottom }

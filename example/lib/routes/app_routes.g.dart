@@ -14,16 +14,23 @@ RouteBase get $homeShellRouteData => ShellRouteData.$route(
   routes: [
     GoRouteData.$route(
       path: '/',
+      hasOverriddenOnExit: false,
       factory: $WelcomeRoute._fromState,
       routes: [
-        GoRouteData.$route(path: 'stats', factory: $StatsRoute._fromState),
+        GoRouteData.$route(
+          path: 'stats',
+          hasOverriddenOnExit: false,
+          factory: $StatsRoute._fromState,
+        ),
         GoRouteData.$route(
           path: 'add',
+          hasOverriddenOnExit: false,
           parentNavigatorKey: AddMoodEntryRoute.$parentNavigatorKey,
           factory: $AddMoodEntryRoute._fromState,
           routes: [
             GoRouteData.$route(
               path: ':moodName/remarks',
+              hasOverriddenOnExit: false,
               parentNavigatorKey: RemarksRoute.$parentNavigatorKey,
               factory: $RemarksRoute._fromState,
             ),

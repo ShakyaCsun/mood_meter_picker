@@ -36,9 +36,7 @@ class ExampleApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Mood Meter Picker Demo',
       theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF5EEDED),
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF5EEDED)),
         useMaterial3: true,
       ),
       darkTheme: ThemeData.from(
