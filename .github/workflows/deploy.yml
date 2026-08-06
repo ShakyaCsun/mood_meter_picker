@@ -16,8 +16,11 @@ permissions:
 jobs:
   # Build job
   build:
-    name: Build
+    name: Build Example App
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: example
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -26,13 +29,12 @@ jobs:
         with:
           cache: true
           channel: beta
-      - run: cd example
       - run: flutter pub get
       - run: flutter build web
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./build/web
+          path: example/build/web
 
   # Deployment job
   deploy:
